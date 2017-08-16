@@ -70,6 +70,11 @@ internal final class RootViewController: UIViewController {
 }
 
 extension RootViewController: UITableViewDelegate {
+    internal func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        // Remove the space at the top of the tableview
+        return .leastNormalMagnitude
+    }
+    
     internal func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         // Remove the space at the bottom of the tableview
         return .leastNormalMagnitude
