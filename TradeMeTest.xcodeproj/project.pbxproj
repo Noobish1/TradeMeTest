@@ -21,6 +21,8 @@
 		75F80FF71F43DC5D00F8C3FD /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F80FF61F43DC5D00F8C3FD /* HTTPMethod.swift */; };
 		75F80FFD1F43E7C100F8C3FD /* DataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F80FFC1F43E7C100F8C3FD /* DataResponse.swift */; };
 		75F810001F43E81F00F8C3FD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F80FFF1F43E81F00F8C3FD /* NetworkError.swift */; };
+		75F810041F43EC6400F8C3FD /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F810031F43EC6400F8C3FD /* Category.swift */; };
+		75F810081F43EE2000F8C3FD /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F810071F43EE2000F8C3FD /* APIClient.swift */; };
 		EE937A4AD266DB45473F2CCB /* Pods_TradeMeTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2CFEEEF4F9B7E17AA71BB85 /* Pods_TradeMeTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,15 +37,17 @@
 		75F80FDA1F43C6EE00F8C3FD /* Gemfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
 		75F80FDB1F43C6EE00F8C3FD /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		75F80FE31F43CAD900F8C3FD /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		75F80FE61F43CE0A00F8C3FD /* APIClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClientProtocol.swift; path = APIClientProtocol.swift; sourceTree = "<group>"; };
-		75F80FE81F43CED700F8C3FD /* APIEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIEndpoint.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
-		75F80FEB1F43D4EA00F8C3FD /* RequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestBuilder.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
-		75F80FEE1F43D64300F8C3FD /* EnvironmentVariablesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnvironmentVariablesProtocol.swift; path = EnvironmentVariablesProtocol.swift; sourceTree = "<group>"; };
-		75F80FF01F43D6D400F8C3FD /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Environment.swift; path = Environment.swift; sourceTree = "<group>"; };
-		75F80FF21F43D74C00F8C3FD /* DevEnvironmentVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DevEnvironmentVariables.swift; path = DevEnvironmentVariables.swift; sourceTree = "<group>"; };
-		75F80FF61F43DC5D00F8C3FD /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPMethod.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		75F80FFC1F43E7C100F8C3FD /* DataResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataResponse.swift; path = DataResponse.swift; sourceTree = "<group>"; };
-		75F80FFF1F43E81F00F8C3FD /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkError.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		75F80FE61F43CE0A00F8C3FD /* APIClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientProtocol.swift; sourceTree = "<group>"; };
+		75F80FE81F43CED700F8C3FD /* APIEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		75F80FEB1F43D4EA00F8C3FD /* RequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		75F80FEE1F43D64300F8C3FD /* EnvironmentVariablesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentVariablesProtocol.swift; sourceTree = "<group>"; };
+		75F80FF01F43D6D400F8C3FD /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		75F80FF21F43D74C00F8C3FD /* DevEnvironmentVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevEnvironmentVariables.swift; sourceTree = "<group>"; };
+		75F80FF61F43DC5D00F8C3FD /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		75F80FFC1F43E7C100F8C3FD /* DataResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataResponse.swift; sourceTree = "<group>"; };
+		75F80FFF1F43E81F00F8C3FD /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		75F810031F43EC6400F8C3FD /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = Category.swift; sourceTree = "<group>"; };
+		75F810071F43EE2000F8C3FD /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		855AAA6814D08D998E44E3FE /* Pods-TradeMeTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradeMeTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TradeMeTest/Pods-TradeMeTest.debug.xcconfig"; sourceTree = "<group>"; };
 		9F4785C5BEA625CF7E646709 /* Pods-TradeMeTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradeMeTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-TradeMeTest/Pods-TradeMeTest.release.xcconfig"; sourceTree = "<group>"; };
 		D2CFEEEF4F9B7E17AA71BB85 /* Pods_TradeMeTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TradeMeTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +91,7 @@
 			children = (
 				75F80FD81F43C68300F8C3FD /* Application */,
 				75F80FED1F43D60000F8C3FD /* Environment */,
+				75F810021F43EC0800F8C3FD /* Models */,
 				75F80FE51F43CDD000F8C3FD /* Networking */,
 				75F80FD71F43C67300F8C3FD /* Supporting Files */,
 				75F80FE21F43CA9000F8C3FD /* ViewControllers */,
@@ -128,7 +133,6 @@
 				75F80FFE1F43E80C00F8C3FD /* Objects */,
 				75F810011F43E86700F8C3FD /* Protocols */,
 			);
-			name = Networking;
 			path = Networking;
 			sourceTree = "<group>";
 		};
@@ -139,7 +143,6 @@
 				75F80FF01F43D6D400F8C3FD /* Environment.swift */,
 				75F80FEE1F43D64300F8C3FD /* EnvironmentVariablesProtocol.swift */,
 			);
-			name = Environment;
 			path = Environment;
 			sourceTree = "<group>";
 		};
@@ -149,7 +152,6 @@
 				75F80FFB1F43E7A300F8C3FD /* Alamofire */,
 				75F80FF51F43DC3E00F8C3FD /* KeyedAPIParameters */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -158,7 +160,6 @@
 			children = (
 				75F80FF61F43DC5D00F8C3FD /* HTTPMethod.swift */,
 			);
-			name = KeyedAPIParameters;
 			path = KeyedAPIParameters;
 			sourceTree = "<group>";
 		};
@@ -167,18 +168,17 @@
 			children = (
 				75F80FFC1F43E7C100F8C3FD /* DataResponse.swift */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
 		75F80FFE1F43E80C00F8C3FD /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				75F810071F43EE2000F8C3FD /* APIClient.swift */,
 				75F80FE81F43CED700F8C3FD /* APIEndpoint.swift */,
 				75F80FFF1F43E81F00F8C3FD /* NetworkError.swift */,
 				75F80FEB1F43D4EA00F8C3FD /* RequestBuilder.swift */,
 			);
-			name = Objects;
 			path = Objects;
 			sourceTree = "<group>";
 		};
@@ -187,8 +187,16 @@
 			children = (
 				75F80FE61F43CE0A00F8C3FD /* APIClientProtocol.swift */,
 			);
-			name = Protocols;
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		75F810021F43EC0800F8C3FD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				75F810031F43EC6400F8C3FD /* Category.swift */,
+			);
+			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		CFF63574230C5358999C2D1E /* Frameworks */ = {
@@ -356,8 +364,10 @@
 				75F80FF31F43D74C00F8C3FD /* DevEnvironmentVariables.swift in Sources */,
 				75F80FE91F43CED700F8C3FD /* APIEndpoint.swift in Sources */,
 				75F80FFD1F43E7C100F8C3FD /* DataResponse.swift in Sources */,
+				75F810081F43EE2000F8C3FD /* APIClient.swift in Sources */,
 				75F810001F43E81F00F8C3FD /* NetworkError.swift in Sources */,
 				75F80FEF1F43D64300F8C3FD /* EnvironmentVariablesProtocol.swift in Sources */,
+				75F810041F43EC6400F8C3FD /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
