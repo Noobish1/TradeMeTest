@@ -8,20 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		75F80FC61F43C3E200F8C3FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F80FC51F43C3E200F8C3FD /* AppDelegate.swift */; };
-		75F80FC81F43C3E200F8C3FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F80FC71F43C3E200F8C3FD /* ViewController.swift */; };
-		75F80FCB1F43C3E200F8C3FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75F80FC91F43C3E200F8C3FD /* Main.storyboard */; };
 		75F80FCD1F43C3E200F8C3FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75F80FCC1F43C3E200F8C3FD /* Assets.xcassets */; };
-		75F80FD01F43C3E200F8C3FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75F80FCE1F43C3E200F8C3FD /* LaunchScreen.storyboard */; };
+		75F80FDF1F43C71400F8C3FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75F80FCE1F43C3E200F8C3FD /* LaunchScreen.storyboard */; };
+		75F80FE01F43C71400F8C3FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75F80FC91F43C3E200F8C3FD /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		75F80FC21F43C3E200F8C3FD /* TradeMeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TradeMeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F80FC51F43C3E200F8C3FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		75F80FC71F43C3E200F8C3FD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		75F80FCA1F43C3E200F8C3FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		75F80FCC1F43C3E200F8C3FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75F80FCF1F43C3E200F8C3FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75F80FD11F43C3E200F8C3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75F80FD91F43C6EE00F8C3FD /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		75F80FDA1F43C6EE00F8C3FD /* Gemfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
+		75F80FDB1F43C6EE00F8C3FD /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,8 +39,11 @@
 		75F80FB91F43C3E200F8C3FD = {
 			isa = PBXGroup;
 			children = (
-				75F80FC41F43C3E200F8C3FD /* TradeMeTest */,
 				75F80FC31F43C3E200F8C3FD /* Products */,
+				75F80FC41F43C3E200F8C3FD /* TradeMeTest */,
+				75F80FDB1F43C6EE00F8C3FD /* .gitignore */,
+				75F80FD91F43C6EE00F8C3FD /* .swiftlint.yml */,
+				75F80FDA1F43C6EE00F8C3FD /* Gemfile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +58,29 @@
 		75F80FC41F43C3E200F8C3FD /* TradeMeTest */ = {
 			isa = PBXGroup;
 			children = (
-				75F80FC51F43C3E200F8C3FD /* AppDelegate.swift */,
-				75F80FC71F43C3E200F8C3FD /* ViewController.swift */,
-				75F80FC91F43C3E200F8C3FD /* Main.storyboard */,
-				75F80FCC1F43C3E200F8C3FD /* Assets.xcassets */,
-				75F80FCE1F43C3E200F8C3FD /* LaunchScreen.storyboard */,
-				75F80FD11F43C3E200F8C3FD /* Info.plist */,
+				75F80FD81F43C68300F8C3FD /* Application */,
+				75F80FD71F43C67300F8C3FD /* Supporting Files */,
 			);
 			path = TradeMeTest;
+			sourceTree = "<group>";
+		};
+		75F80FD71F43C67300F8C3FD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				75F80FCC1F43C3E200F8C3FD /* Assets.xcassets */,
+				75F80FD11F43C3E200F8C3FD /* Info.plist */,
+				75F80FCE1F43C3E200F8C3FD /* LaunchScreen.storyboard */,
+				75F80FC91F43C3E200F8C3FD /* Main.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		75F80FD81F43C68300F8C3FD /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				75F80FC51F43C3E200F8C3FD /* AppDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,9 +143,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75F80FD01F43C3E200F8C3FD /* LaunchScreen.storyboard in Resources */,
+				75F80FDF1F43C71400F8C3FD /* LaunchScreen.storyboard in Resources */,
+				75F80FE01F43C71400F8C3FD /* Main.storyboard in Resources */,
 				75F80FCD1F43C3E200F8C3FD /* Assets.xcassets in Resources */,
-				75F80FCB1F43C3E200F8C3FD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +156,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75F80FC81F43C3E200F8C3FD /* ViewController.swift in Sources */,
 				75F80FC61F43C3E200F8C3FD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,6 +169,7 @@
 				75F80FCA1F43C3E200F8C3FD /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		75F80FCE1F43C3E200F8C3FD /* LaunchScreen.storyboard */ = {
@@ -159,6 +178,7 @@
 				75F80FCF1F43C3E200F8C3FD /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -264,7 +284,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5FU3YAJNJH;
-				INFOPLIST_FILE = TradeMeTest/Info.plist;
+				INFOPLIST_FILE = "TradeMeTest/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobish1.TradeMeTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -277,7 +297,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5FU3YAJNJH;
-				INFOPLIST_FILE = TradeMeTest/Info.plist;
+				INFOPLIST_FILE = "TradeMeTest/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.noobish1.TradeMeTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -304,6 +324,7 @@
 				75F80FD61F43C3E200F8C3FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
