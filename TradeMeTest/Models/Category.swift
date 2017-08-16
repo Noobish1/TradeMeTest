@@ -14,6 +14,6 @@ extension Category: Mappable {
     
     internal init(map: KeyedMapper<Category>) throws {
         self.name = try map.from(.name)
-        self.subcategories = try map.from(.subcategories)
+        self.subcategories = map.optionalFrom(.subcategories) ?? []
     }
 }

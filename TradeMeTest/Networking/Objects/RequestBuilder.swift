@@ -28,7 +28,7 @@ internal final class RequestBuilder {
     
     internal class func buildRequest(for endpoint: APIEndpoint, params: APIParameters? = nil,
                                      dependencies: RequestBuilderDependencies = .default) -> DataRequest {
-        let URLString = "\(dependencies.baseURLString)/\(endpoint.apiVersion)/restaurants"
+        let URLString = "\(dependencies.baseURLString)/\(endpoint.apiVersion)/"
         
         guard var URL = URL(string: URLString) else {
             fatalError("Could not create a URL from \(URLString)")
