@@ -2,12 +2,9 @@ import UIKit
 import SnapKit
 import RxSwift
 
-internal final class RootViewController: UIViewController {
+internal final class CategoryViewController: UIViewController {
     // MARK: properties
-    private var viewModels: [CategoryViewModel] = []
-    private lazy var dataSource: SimpleViewModelDataSource<CategoryTableViewCell> = {
-        SimpleViewModelDataSource<CategoryTableViewCell>(viewModels: self.viewModels)
-    }()
+    fileprivate let dataSource: SimpleViewModelDataSource<CategoryTableViewCell>
     private lazy var tableView = UITableView(frame: UIScreen.main.bounds, style: .grouped).then {
         $0.dataSource = self.dataSource
         $0.delegate = self
@@ -18,6 +15,21 @@ internal final class RootViewController: UIViewController {
         $0.addTarget(self, action: #selector(fetchRootCategories), for: .valueChanged)
     }
     private let disposeBag = DisposeBag()
+    private let needsInitialLoad: Bool
+    
+    // MARK: init/deinit
+    internal init(title: String, viewModels: [CategoryViewModel]) {
+        self.needsInitialLoad = viewModels.isEmpty
+        self.dataSource = SimpleViewModelDataSource<CategoryTableViewCell>(viewModels: viewModels)
+            
+        super.init(nibName: nil, bundle: nil)
+        
+        self.title = title
+    }
+    
+    internal required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: UIViewController
     internal override func viewDidLoad() {
@@ -30,7 +42,9 @@ internal final class RootViewController: UIViewController {
     internal override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        fetchRootCategories()
+        if needsInitialLoad {
+            fetchRootCategories()
+        }
     }
     
     // MARK: fetch
@@ -58,8 +72,6 @@ internal final class RootViewController: UIViewController {
     
     // MARK: setup
     private func setupInitialViews() {
-        self.title = NSLocalizedString("Categories", comment: "")
-        
         self.view.addSubview(tableView)
         tableView.addSubview(refreshControl)
     }
@@ -71,7 +83,19 @@ internal final class RootViewController: UIViewController {
     }
 }
 
-extension RootViewController: UITableViewDelegate {
+extension CategoryViewController: UITableViewDelegate {
+    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewModel = dataSource.viewModel(at: indexPath)
+        
+        if viewModel.hasSubcategories {
+            let rootVC = CategoryViewController(title: viewModel.name, viewModels: viewModel.subcategoires)
+            
+            self.navigationController?.pushViewController(rootVC, animated: true)
+        } else {
+            // TODO: dismiss category viewer
+        }
+    }
+    
     internal func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         // Remove the space at the top of the tableview
         return .leastNormalMagnitude

@@ -38,6 +38,8 @@ internal final class CategoryTableViewCell: CustomViewModelTableViewCell<Categor
     }
     
     internal override func update(with viewModel: CategoryViewModel) {
+        self.accessoryType = viewModel.accessoryType
+        
         self.innerContentView.nameLabel.text = viewModel.name
     }
 }

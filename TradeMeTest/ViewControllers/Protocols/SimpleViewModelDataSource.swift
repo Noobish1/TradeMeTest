@@ -15,6 +15,11 @@ internal final class SimpleViewModelDataSource<Cell: CustomViewModelCell>: NSObj
         self.viewModels = viewModels
     }
     
+    // MARK: retrieval
+    internal func viewModel(at indexPath: IndexPath) -> Cell.ViewModel {
+        return viewModels[indexPath.row]
+    }
+    
     // MARK: UITableViewDataSource
     // These can't be in an extension otherwise we get compiler errors
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
