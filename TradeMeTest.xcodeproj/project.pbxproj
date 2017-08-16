@@ -11,6 +11,7 @@
 		75F80FCD1F43C3E200F8C3FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75F80FCC1F43C3E200F8C3FD /* Assets.xcassets */; };
 		75F80FDF1F43C71400F8C3FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75F80FCE1F43C3E200F8C3FD /* LaunchScreen.storyboard */; };
 		75F80FE01F43C71400F8C3FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75F80FC91F43C3E200F8C3FD /* Main.storyboard */; };
+		75F80FE41F43CAD900F8C3FD /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F80FE31F43CAD900F8C3FD /* RootViewController.swift */; };
 		EE937A4AD266DB45473F2CCB /* Pods_TradeMeTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2CFEEEF4F9B7E17AA71BB85 /* Pods_TradeMeTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +25,7 @@
 		75F80FD91F43C6EE00F8C3FD /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		75F80FDA1F43C6EE00F8C3FD /* Gemfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
 		75F80FDB1F43C6EE00F8C3FD /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		75F80FE31F43CAD900F8C3FD /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewController.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		855AAA6814D08D998E44E3FE /* Pods-TradeMeTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradeMeTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TradeMeTest/Pods-TradeMeTest.debug.xcconfig"; sourceTree = "<group>"; };
 		9F4785C5BEA625CF7E646709 /* Pods-TradeMeTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradeMeTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-TradeMeTest/Pods-TradeMeTest.release.xcconfig"; sourceTree = "<group>"; };
 		D2CFEEEF4F9B7E17AA71BB85 /* Pods_TradeMeTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TradeMeTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,13 +46,13 @@
 		75F80FB91F43C3E200F8C3FD = {
 			isa = PBXGroup;
 			children = (
+				CFF63574230C5358999C2D1E /* Frameworks */,
+				D8D5942E7ACC42A98759DAAC /* Pods */,
 				75F80FC31F43C3E200F8C3FD /* Products */,
 				75F80FC41F43C3E200F8C3FD /* TradeMeTest */,
 				75F80FDB1F43C6EE00F8C3FD /* .gitignore */,
 				75F80FD91F43C6EE00F8C3FD /* .swiftlint.yml */,
 				75F80FDA1F43C6EE00F8C3FD /* Gemfile */,
-				D8D5942E7ACC42A98759DAAC /* Pods */,
-				CFF63574230C5358999C2D1E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +69,7 @@
 			children = (
 				75F80FD81F43C68300F8C3FD /* Application */,
 				75F80FD71F43C67300F8C3FD /* Supporting Files */,
+				75F80FE21F43CA9000F8C3FD /* ViewControllers */,
 			);
 			path = TradeMeTest;
 			sourceTree = "<group>";
@@ -88,6 +91,15 @@
 				75F80FC51F43C3E200F8C3FD /* AppDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		75F80FE21F43CA9000F8C3FD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				75F80FE31F43CAD900F8C3FD /* RootViewController.swift */,
+			);
+			name = ViewControllers;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		CFF63574230C5358999C2D1E /* Frameworks */ = {
@@ -246,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75F80FE41F43CAD900F8C3FD /* RootViewController.swift in Sources */,
 				75F80FC61F43C3E200F8C3FD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
