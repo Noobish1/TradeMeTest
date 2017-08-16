@@ -16,9 +16,12 @@ internal final class CategoryViewController: UIViewController {
     }
     private let disposeBag = DisposeBag()
     private let needsInitialLoad: Bool
+    // TODO: pass back a CategoryViewModel
+    fileprivate let onDone: () -> Void
     
     // MARK: init/deinit
-    internal init(title: String, viewModels: [CategoryViewModel]) {
+    internal init(title: String, viewModels: [CategoryViewModel], onDone: @escaping () -> Void) {
+        self.onDone = onDone
         self.needsInitialLoad = viewModels.isEmpty
         self.dataSource = SimpleViewModelDataSource<CategoryTableViewCell>(viewModels: viewModels)
             
@@ -74,12 +77,19 @@ internal final class CategoryViewController: UIViewController {
     private func setupInitialViews() {
         self.view.addSubview(tableView)
         tableView.addSubview(refreshControl)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
     }
     
     private func setupConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    @objc
+    private func doneButtonPressed() {
+        onDone()
     }
 }
 
@@ -88,11 +98,11 @@ extension CategoryViewController: UITableViewDelegate {
         let viewModel = dataSource.viewModel(at: indexPath)
         
         if viewModel.hasSubcategories {
-            let rootVC = CategoryViewController(title: viewModel.name, viewModels: viewModel.subcategoires)
+            let rootVC = CategoryViewController(title: viewModel.name, viewModels: viewModel.subcategoires, onDone: onDone)
             
             self.navigationController?.pushViewController(rootVC, animated: true)
         } else {
-            // TODO: dismiss category viewer
+            onDone()
         }
     }
     
