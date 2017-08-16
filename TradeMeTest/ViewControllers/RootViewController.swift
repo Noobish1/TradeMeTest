@@ -58,6 +58,8 @@ internal final class RootViewController: UIViewController {
     
     // MARK: setup
     private func setupInitialViews() {
+        self.title = NSLocalizedString("Categories", comment: "")
+        
         self.view.addSubview(tableView)
         tableView.addSubview(refreshControl)
     }
