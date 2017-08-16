@@ -6,27 +6,16 @@ internal class CustomView<ContentView>: UIView, CustomViewProtocol where Content
     internal lazy var innerContentView: ContentView = {
         type(of: self).createContentView()
     }()
-    private var needsToSetupConstraints = true
     
     // MARK: init/deinit
     internal override init(frame: CGRect) {
         super.init(frame: frame)
         
         setupCustomView()
+        setupConstraints()
     }
     
     internal required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: constraints
-    internal override func updateConstraints() {
-        if needsToSetupConstraints {
-            needsToSetupConstraints = false
-            
-            setupConstraints()
-        }
-        
-        super.updateConstraints()
     }
 }

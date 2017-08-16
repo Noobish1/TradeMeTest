@@ -6,13 +6,13 @@ internal class CustomViewModelTableViewCell<ContentView, ViewModel>: UITableView
     internal lazy var innerContentView: ContentView = {
         type(of: self).createContentView()
     }()
-    private var needsToSetupConstraints = true
     
     // MARK: init/deinit
     internal required init(viewModel: ViewModel) {
         super.init(style: .default, reuseIdentifier: type(of: self).identifier)
         
         setupCustomView()
+        setupConstraints()
     }
     
     internal required init?(coder aDecoder: NSCoder) {
@@ -22,16 +22,5 @@ internal class CustomViewModelTableViewCell<ContentView, ViewModel>: UITableView
     // MARK: update
     internal func update(with viewModel: ViewModel) {
         
-    }
-    
-    // MARK: constraints
-    internal override func updateConstraints() {
-        if needsToSetupConstraints {
-            needsToSetupConstraints = false
-            
-            setupConstraints()
-        }
-        
-        super.updateConstraints()
     }
 }

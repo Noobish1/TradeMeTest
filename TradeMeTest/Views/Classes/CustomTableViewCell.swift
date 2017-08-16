@@ -6,27 +6,16 @@ internal class CustomTableViewCell<ContentView>: UITableViewCell, CustomTableVie
     internal lazy var innerContentView: ContentView = {
         type(of: self).createContentView()
     }()
-    private var needsToSetupConstraints = true
     
     // MARK: init/deinit
     internal override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupCustomView()
+        setupConstraints()
     }
     
     internal required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: constraints
-    internal override func updateConstraints() {
-        if needsToSetupConstraints {
-            needsToSetupConstraints = false
-            
-            setupConstraints()
-        }
-        
-        super.updateConstraints()
     }
 }

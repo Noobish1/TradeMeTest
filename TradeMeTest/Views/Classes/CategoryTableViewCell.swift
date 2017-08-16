@@ -13,6 +13,8 @@ internal final class CategoryTableViewCellContentView: UIView {
     internal override init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.backgroundColor = .blue
+        
         self.addSubview(nameLabel)
         
         nameLabel.snp.makeConstraints { make in

@@ -10,6 +10,7 @@ internal final class RootViewController: UIViewController {
     }()
     private lazy var tableView = UITableView(frame: UIScreen.main.bounds, style: .grouped).then {
         $0.dataSource = self.dataSource
+        $0.delegate = self
         $0.rowHeight = 44
         $0.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
     }
@@ -68,5 +69,12 @@ internal final class RootViewController: UIViewController {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+}
+
+extension RootViewController: UITableViewDelegate {
+    internal func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        // Remove the space at the bottom of the tableview
+        return .leastNormalMagnitude
     }
 }
