@@ -24,16 +24,13 @@ internal final class RootViewController: UIViewController {
         super.viewDidLoad()
         
         setupInitialViews()
+        setupConstraints()
     }
     
     internal override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         fetchRootCategories()
-    }
-    
-    internal override func updateViewConstraints() {
-        setupConstraints()
     }
     
     // MARK: fetch
