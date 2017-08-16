@@ -5,20 +5,19 @@ import SnapKit
 
 internal final class CategoryTableViewCellContentView: UIView {
     // MARK: properties
-    fileprivate let nameLabel: UILabel = UILabel().then {
-        $0.backgroundColor = .magenta
-    }
+    fileprivate let nameLabel: UILabel = UILabel()
     
     // MARK: init/deinit
     internal override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .blue
-        
         self.addSubview(nameLabel)
         
         nameLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().inset(16)
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
     
