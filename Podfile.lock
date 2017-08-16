@@ -3,6 +3,7 @@ PODS:
   - KeyedAPIParameters (0.1)
   - KeyedMapper (1.12.0)
   - RxSwift (3.4.1)
+  - SnapKit (3.2.0)
   - SwiftLint (0.20.1)
   - Then (2.1.0)
 
@@ -11,6 +12,7 @@ DEPENDENCIES:
   - KeyedAPIParameters (= 0.1)
   - KeyedMapper (= 1.12.0)
   - RxSwift (= 3.4.1)
+  - SnapKit (= 3.2.0)
   - SwiftLint (= 0.20.1)
   - Then (= 2.1.0)
 
@@ -19,9 +21,10 @@ SPEC CHECKSUMS:
   KeyedAPIParameters: b891755c0e70032bd8d12e34d70281b0dd7fd413
   KeyedMapper: d5de27a60ce8aa854b895dd0fdf1606a6c32d1d8
   RxSwift: 656f8fbeca5bc372121a72d9ebdd3cd3bc0ffade
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
   Then: 8496793c8fcac95482b943909b440724c7d8d82c
 
-PODFILE CHECKSUM: 714f31f8c82c98166268596cfed2b6c929d29883
+PODFILE CHECKSUM: 1371c10b4dddb2519dbf9b787d0b49441c45ae40
 
 COCOAPODS: 1.1.1

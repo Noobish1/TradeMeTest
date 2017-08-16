@@ -7,4 +7,5 @@ target 'TradeMeTest' do
     pod 'RxSwift' , '3.4.1'
     pod 'KeyedMapper', '1.12.0'
     pod 'KeyedAPIParameters', '0.1'
+    pod 'SnapKit', '3.2.0'
 end
