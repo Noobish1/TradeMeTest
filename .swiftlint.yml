@@ -15,7 +15,6 @@ opt_in_rules:
   - fatal_error_message
   - explicit_top_level_acl
   - implicit_return
-  - extension_access_modifier
   - empty_count
 included:
   - TradeMeTest
@@ -26,7 +25,7 @@ trailing_whitespace:
   ignores_empty_lines: true
 colon:
   apply_to_dictionaries: false
-line_length: 160
+line_length: 200
 file_length:
   - 500 # warning
   - 750 # error
