@@ -6,17 +6,19 @@ import Alamofire
 internal enum APIEndpoint {
     case rootCategories
     case category(Int)
+    case search(text: String)
     
     internal var url: String {
         switch self {
             case .rootCategories: return "Categories/0.json"
             case .category(let category): return "Categories/\(category).json"
+            case .search: return "Search/General.json"
         }
     }
     
     internal var method: KeyedAPIParameters.HTTPMethod {
         switch self {
-            case .rootCategories, .category: return .get
+            case .rootCategories, .category, .search: return .get
         }
     }
     
