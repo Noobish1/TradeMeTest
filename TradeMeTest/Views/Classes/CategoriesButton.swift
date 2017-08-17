@@ -66,7 +66,15 @@ internal final class CategoriesButton: UIControl {
     
     // MARK: setup
     private func setupViews(for state: CategoriesViewState) {
-        self.addSubview(activityIndicator)
+        let containerView = UIView()
+        
+        self.addSubview(containerView)
+        
+        containerView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+        
+        containerView.addSubview(activityIndicator)
         
         activityIndicator.snp.remakeConstraints { make in
             make.leading.equalToSuperview().offset(8)
@@ -76,7 +84,7 @@ internal final class CategoriesButton: UIControl {
             activityIndicatorWidthConstraint = make.width.equalTo(0).priority(state.activityIndictorZeroWidthPriority).constraint
         }
         
-        self.addSubview(textLabel)
+        containerView.addSubview(textLabel)
         
         textLabel.snp.makeConstraints { make in
             make.leading.equalTo(activityIndicator.snp.trailing).offset(8)
