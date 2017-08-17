@@ -39,7 +39,7 @@ internal final class RootViewController: UIViewController {
     @IBOutlet private weak var categoriesContainerView: UIView!
     @IBOutlet private weak var searchField: UITextField!
     @IBOutlet private weak var categoriesHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var containerBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var containerBottomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var searchContainerView: UIView!
     // MARK: properties
     private lazy var categoriesView: CategoriesView = {
