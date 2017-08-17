@@ -17,11 +17,11 @@ internal final class CategoryViewController: UIViewController {
     fileprivate let viewModel: CategoryViewModel
     
     // MARK: init/deinit
-    internal init(viewModel: CategoryViewModel, viewModels: [CategoryViewModel], onDone: @escaping (CategoryViewModel) -> Completable) {
+    internal init(viewModel: CategoryViewModel, onDone: @escaping (CategoryViewModel) -> Completable) {
         self.viewModel = viewModel
         self.onDone = onDone
-        self.needsInitialLoad = viewModels.isEmpty
-        self.dataSource = SimpleViewModelDataSource<CategoryTableViewCell>(viewModels: viewModels)
+        self.needsInitialLoad = viewModel.subcategoires.isEmpty
+        self.dataSource = SimpleViewModelDataSource<CategoryTableViewCell>(viewModels: viewModel.subcategoires)
             
         super.init(nibName: nil, bundle: nil)
         
@@ -66,7 +66,7 @@ extension CategoryViewController: UITableViewDelegate {
         let selectedViewModel = dataSource.viewModel(at: indexPath)
         
         if selectedViewModel.hasSubcategories {
-            let rootVC = CategoryViewController(viewModel: selectedViewModel, viewModels: selectedViewModel.subcategoires, onDone: onDone)
+            let rootVC = CategoryViewController(viewModel: selectedViewModel, onDone: onDone)
             
             self.navigationController?.pushViewController(rootVC, animated: true)
         } else {

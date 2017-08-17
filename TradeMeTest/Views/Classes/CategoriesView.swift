@@ -93,9 +93,7 @@ internal final class CategoriesView: UIView {
                 
                 switch event {
                     case .success(let categoryVM):
-                        let categoryVC = CategoryViewController(viewModel: categoryVM,
-                                                                viewModels: categoryVM.subcategoires,
-                                                                onDone: strongSelf.onDone)
+                        let categoryVC = CategoryViewController(viewModel: categoryVM, onDone: strongSelf.onDone)
                         
                         strongSelf.transition(to: .loaded(categoryVC))
                     case .error:
