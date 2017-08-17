@@ -35,6 +35,7 @@ fileprivate enum CategoriesAnimation {
 internal final class RootViewController: UIViewController {
     // MARK: outlets
     @IBOutlet private weak var categoriesContainerView: UIView!
+    @IBOutlet private weak var searchField: UITextField!
     @IBOutlet private weak var categoriesHeightConstraint: NSLayoutConstraint!
     // MARK: properties
     private lazy var categoriesView: CategoriesView = {
@@ -110,5 +111,13 @@ internal final class RootViewController: UIViewController {
             
             completion?()
         })
+    }
+}
+
+extension RootViewController: UITextFieldDelegate {
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
     }
 }
