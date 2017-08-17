@@ -13,4 +13,8 @@ internal final class APIClient: APIClientProtocol {
     internal func category(_ category: Int) -> Single<Category> {
         return rx_request(.category(category))
     }
+    
+    internal func search(params: SearchParams) -> Single<SearchResults> {
+        return rx_request(.search, params: params)
+    }
 }

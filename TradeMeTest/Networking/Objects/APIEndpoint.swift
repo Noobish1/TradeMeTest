@@ -6,7 +6,7 @@ import Alamofire
 internal enum APIEndpoint {
     case rootCategories
     case category(Int)
-    case search(text: String)
+    case search
     
     internal var url: String {
         switch self {
