@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		75D28F9C1F4520B300F5AD86 /* NoSubCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D28F9A1F4520B300F5AD86 /* NoSubCategoriesViewController.swift */; };
 		75D28F9D1F4520B300F5AD86 /* NoSubCategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75D28F9B1F4520B300F5AD86 /* NoSubCategoriesViewController.xib */; };
+		75D28F9F1F4542FD00F5AD86 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D28F9E1F4542FD00F5AD86 /* CategoriesView.swift */; };
+		75D28FA21F4547D300F5AD86 /* Singular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D28FA11F4547D300F5AD86 /* Singular.swift */; };
+		75D28FA41F454B0B00F5AD86 /* CategoriesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D28FA31F454B0B00F5AD86 /* CategoriesButton.swift */; };
 		75F80FC61F43C3E200F8C3FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F80FC51F43C3E200F8C3FD /* AppDelegate.swift */; };
 		75F80FCD1F43C3E200F8C3FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75F80FCC1F43C3E200F8C3FD /* Assets.xcassets */; };
 		75F80FDF1F43C71400F8C3FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75F80FCE1F43C3E200F8C3FD /* LaunchScreen.storyboard */; };
@@ -44,6 +47,9 @@
 /* Begin PBXFileReference section */
 		75D28F9A1F4520B300F5AD86 /* NoSubCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSubCategoriesViewController.swift; sourceTree = "<group>"; };
 		75D28F9B1F4520B300F5AD86 /* NoSubCategoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoSubCategoriesViewController.xib; sourceTree = "<group>"; };
+		75D28F9E1F4542FD00F5AD86 /* CategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		75D28FA11F4547D300F5AD86 /* Singular.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Singular.swift; path = Objects/Singular.swift; sourceTree = "<group>"; };
+		75D28FA31F454B0B00F5AD86 /* CategoriesButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesButton.swift; sourceTree = "<group>"; };
 		75F80FC21F43C3E200F8C3FD /* TradeMeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TradeMeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F80FC51F43C3E200F8C3FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75F80FCA1F43C3E200F8C3FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -95,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		75D28FA01F4547C300F5AD86 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				75D28FA11F4547D300F5AD86 /* Singular.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
 		75F80FB91F43C3E200F8C3FD = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +133,7 @@
 		75F80FC41F43C3E200F8C3FD /* TradeMeTest */ = {
 			isa = PBXGroup;
 			children = (
+				75D28FA01F4547C300F5AD86 /* Objects */,
 				75F80FD81F43C68300F8C3FD /* Application */,
 				75F80FED1F43D60000F8C3FD /* Environment */,
 				75F810021F43EC0800F8C3FD /* Models */,
@@ -263,6 +278,8 @@
 				75F810161F43F5F500F8C3FD /* CustomTableViewCell.swift */,
 				75F810141F43F56400F8C3FD /* CustomView.swift */,
 				75F810181F43F63900F8C3FD /* CustomViewModelTableViewCell.swift */,
+				75D28F9E1F4542FD00F5AD86 /* CategoriesView.swift */,
+				75D28FA31F454B0B00F5AD86 /* CategoriesButton.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -459,8 +476,10 @@
 				75F810171F43F5F500F8C3FD /* CustomTableViewCell.swift in Sources */,
 				75D28F9C1F4520B300F5AD86 /* NoSubCategoriesViewController.swift in Sources */,
 				75F810101F43F45400F8C3FD /* CustomTableViewCellProtocol.swift in Sources */,
+				75D28FA21F4547D300F5AD86 /* Singular.swift in Sources */,
 				75F80FE71F43CE0A00F8C3FD /* APIClientProtocol.swift in Sources */,
 				75F80FF71F43DC5D00F8C3FD /* HTTPMethod.swift in Sources */,
+				75D28FA41F454B0B00F5AD86 /* CategoriesButton.swift in Sources */,
 				75F80FF31F43D74C00F8C3FD /* DevEnvironmentVariables.swift in Sources */,
 				75F810121F43F4D900F8C3FD /* CustomViewModelCell.swift in Sources */,
 				75F80FE91F43CED700F8C3FD /* APIEndpoint.swift in Sources */,
@@ -472,6 +491,7 @@
 				75F810001F43E81F00F8C3FD /* NetworkError.swift in Sources */,
 				75F80FEF1F43D64300F8C3FD /* EnvironmentVariablesProtocol.swift in Sources */,
 				75F810041F43EC6400F8C3FD /* Category.swift in Sources */,
+				75D28F9F1F4542FD00F5AD86 /* CategoriesView.swift in Sources */,
 				75F8100C1F43F24B00F8C3FD /* CustomViewProtocol.swift in Sources */,
 				75F810191F43F63900F8C3FD /* CustomViewModelTableViewCell.swift in Sources */,
 				75F8101C1F43F72A00F8C3FD /* UITableView.swift in Sources */,

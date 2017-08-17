@@ -23,6 +23,13 @@ fileprivate enum CategoriesAnimation {
             case .dismiss: return true
         }
     }
+    
+    fileprivate var categoriesHeightConstant: CGFloat {
+        switch self {
+            case .present: return CategoriesViewPosition.open.height
+            case .dismiss: return CategoriesViewPosition.collapsed.height
+        }
+    }
 }
 
 internal final class RootViewController: UIViewController {
@@ -30,29 +37,21 @@ internal final class RootViewController: UIViewController {
     @IBOutlet private weak var categoriesContainerView: UIView!
     @IBOutlet private weak var categoriesHeightConstraint: NSLayoutConstraint!
     // MARK: properties
-    private lazy var categoryViewController: CategoryViewController = {
-        let initialTitle = NSLocalizedString("Categories", comment: "")
-        
-        return CategoryViewController(title: initialTitle, viewModels: [], onDone: { [weak self] in
+    private lazy var categoriesView: CategoriesView = {
+        CategoriesView(parentVC: self, onTap: { [weak self] in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.categoriesButtonPressed()
+        }, onDone: { [weak self] viewModel -> Completable in
             guard let strongSelf = self else {
                 return .empty()
             }
             
+            print("\(viewModel.name) selected!")
+            
             return strongSelf.doneButtonPressed()
         })
     }()
-    private let categoriesButton = UIButton().then {
-        $0.setTitle("", for: .normal)
-        $0.addTarget(self, action: #selector(categoriesButtonPressed), for: .touchUpInside)
-    }
-    private let categoriesNavBar = UINavigationBar().then {
-        let navItem = UINavigationItem(title: NSLocalizedString("Categories", comment: ""))
-        
-        $0.setItems([navItem], animated: false)
-    }
-    // MARK: constants
-    private final let handHoldHeight: CGFloat = 20
-    private final let categoryVCHeight: CGFloat = 44 * 7
     
     // MARK: init/deinit
     internal init() {
@@ -63,74 +62,24 @@ internal final class RootViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    internal override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: setup
+    private func setupCategoriesView() {
+        categoriesContainerView.addSubview(categoriesView)
         
-        let categoryHandholdContainerView = UIView()
-        let categoryHandholdView = UIView().then {
-            $0.backgroundColor = .darkGray
-        }
-        
-        categoryHandholdContainerView.addSubview(categoryHandholdView)
-        
-        categoryHandholdView.snp.makeConstraints { make in
-            make.width.equalTo(24)
-            make.height.equalTo(4)
-            make.center.equalToSuperview()
-        }
-        
-        categoriesContainerView.addSubview(categoryHandholdContainerView)
-        
-        categoryHandholdContainerView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.height.equalTo(handHoldHeight)
-        }
-        
-        let vcContainerView = UIView()
-        
-        categoriesContainerView.addSubview(vcContainerView)
-        
-        vcContainerView.snp.makeConstraints { make in
-            make.top.equalTo(categoryHandholdContainerView.snp.bottom)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.height.equalTo(categoryVCHeight)
-        }
-        
-        let navVC = UINavigationController(rootViewController: categoryViewController)
-        
-        vcContainerView.addSubview(navVC.view)
-        
-        navVC.view.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        self.addChildViewController(navVC)
-        navVC.didMove(toParentViewController: self)
-        
-        categoriesContainerView.addSubview(categoriesNavBar)
-        
-        categoriesNavBar.snp.makeConstraints { make in
-            make.top.equalTo(categoryHandholdContainerView.snp.bottom)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.height.equalTo(44)
-        }
-        
-        categoriesContainerView.addSubview(categoriesButton)
-        
-        categoriesButton.snp.makeConstraints { make in
+        categoriesView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
     
-    // MARK: interface actions
-    @objc
-    private func categoriesButtonPressed() {
-        categoriesHeightConstraint.constant = self.categoryVCHeight + self.handHoldHeight
+    // MARK: UIViewController
+    internal override func viewDidLoad() {
+        super.viewDidLoad()
         
+        setupCategoriesView()
+    }
+    
+    // MARK: interface actions
+    private func categoriesButtonPressed() {
         performCategoriesAnimation(.present, completion: nil)
     }
     
@@ -139,8 +88,6 @@ internal final class RootViewController: UIViewController {
             guard let strongSelf = self else {
                 return Disposables.create()
             }
-            
-            strongSelf.categoriesHeightConstraint.constant = 64
             
             strongSelf.performCategoriesAnimation(.dismiss, completion: {
                 observer(.completed)
@@ -152,12 +99,14 @@ internal final class RootViewController: UIViewController {
     
     // MARK: animations
     private func performCategoriesAnimation(_ animation: CategoriesAnimation, completion: (() -> Void)?) {
+        categoriesHeightConstraint.constant = animation.categoriesHeightConstant
+        
         UIView.animate(withDuration: animation.duration, animations: {
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
-            self.categoriesNavBar.alpha = animation.navBarAlpha
+            self.categoriesView.updateNavBarAlpha(to: animation.navBarAlpha)
         }, completion: { _ in
-            self.categoriesButton.isUserInteractionEnabled = animation.categoriesButtonEnabledAfter
+            self.categoriesView.updateButtonUserInteractionEnabled(to: animation.categoriesButtonEnabledAfter)
             
             completion?()
         })

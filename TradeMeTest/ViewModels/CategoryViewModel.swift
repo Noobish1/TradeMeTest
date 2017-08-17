@@ -10,11 +10,11 @@ internal struct CategoryViewModel {
         return hasSubcategories ? .disclosureIndicator : .none
     }
     
-    internal init(category: Category) {
+    internal init(name: String? = nil, category: Category) {
         // It seems like you do this in the Trade Me app unless the names are different in the production endpoint
         // I decided to copy what the existing app does
-        self.name = category.name.replacingOccurrences(of: "Trade Me ", with: "")
+        self.name = name ?? category.name.replacingOccurrences(of: "Trade Me ", with: "")
         self.hasSubcategories = !category.subcategories.isEmpty
-        self.subcategoires = category.subcategories.map(CategoryViewModel.init)
+        self.subcategoires = category.subcategories.map { CategoryViewModel(category: $0) }
     }
 }
