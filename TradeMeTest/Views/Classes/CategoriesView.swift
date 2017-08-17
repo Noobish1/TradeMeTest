@@ -66,7 +66,11 @@ internal final class CategoriesView: UIView {
     // MARK: Interface actions
     @objc
     private func buttonTapped() {
-        onTap()
+        switch state {
+            case .loading: break
+            case .loaded: onTap()
+            case .failedToLoad: fetchRootCategories()
+        }
     }
     
     // MARK: UIView
@@ -74,23 +78,30 @@ internal final class CategoriesView: UIView {
         guard self.window != nil else { return }
         
         initialFetch.performOnce {
-            APIClient.shared.rootCategories()
-                .map { CategoryViewModel(name: NSLocalizedString("Categories", comment: ""), category: $0) }
-                .subscribe { [weak self] event in
-                    guard let strongSelf = self else { return }
-                    
-                    switch event {
-                        case .success(let categoryVM):
-                            let categoryVC = CategoryViewController(viewModel: categoryVM,
-                                                                    viewModels: categoryVM.subcategoires,
-                                                                    onDone: strongSelf.onDone)
-                            
-                            strongSelf.transition(to: .loaded(categoryVC))
-                        case .error:
-                            strongSelf.transition(to: .failedToLoad)
-                    }
-                }.disposed(by: disposeBag)
+            fetchRootCategories()
         }
+    }
+    
+    // MARK: fetch
+    private func fetchRootCategories() {
+        transition(to: .loading)
+        
+        APIClient.shared.rootCategories()
+            .map { CategoryViewModel(name: NSLocalizedString("Categories", comment: ""), category: $0) }
+            .subscribe { [weak self] event in
+                guard let strongSelf = self else { return }
+                
+                switch event {
+                    case .success(let categoryVM):
+                        let categoryVC = CategoryViewController(viewModel: categoryVM,
+                                                                viewModels: categoryVM.subcategoires,
+                                                                onDone: strongSelf.onDone)
+                        
+                        strongSelf.transition(to: .loaded(categoryVC))
+                    case .error:
+                        strongSelf.transition(to: .failedToLoad)
+                }
+            }.disposed(by: disposeBag)
     }
     
     // MARK: transition
