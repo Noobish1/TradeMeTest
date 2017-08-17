@@ -13,6 +13,8 @@
             <connections>
                 <outlet property="categoriesContainerView" destination="Hoi-T9-iDe" id="4Lk-UP-BEI"/>
                 <outlet property="categoriesHeightConstraint" destination="BHa-ko-T5O" id="nxZ-cq-mLd"/>
+                <outlet property="containerBottomConstraint" destination="MnX-eW-jfr" id="WmD-3X-ty6"/>
+                <outlet property="searchContainerView" destination="uzr-KH-aul" id="UJ0-ea-N3x"/>
                 <outlet property="searchField" destination="gQi-3T-zRr" id="TuR-hy-zbr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,47 +24,66 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTp-Bs-idy" userLabel="ContainerView" customClass="UIScrollView">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6q6-2g-tqt">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Search" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gQi-3T-zRr">
-                            <rect key="frame" x="20" y="212.5" width="335" height="50"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTp-Bs-idy" userLabel="ContainerView" customClass="UIScrollView">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="513"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hoi-T9-iDe" userLabel="CategoriesContainerView">
+                            <rect key="frame" x="0.0" y="603" width="375" height="64"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="y2C-iM-Vw9"/>
+                                <constraint firstAttribute="height" constant="64" id="BHa-ko-T5O"/>
                             </constraints>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="efD-Kf-8h3"/>
-                            </connections>
-                        </textField>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzr-KH-aul">
+                            <rect key="frame" x="0.0" y="513" width="375" height="90"/>
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Search" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gQi-3T-zRr">
+                                    <rect key="frame" x="20" y="20" width="335" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="Ae7-A4-dsO"/>
+                                    </constraints>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="efD-Kf-8h3"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="gQi-3T-zRr" secondAttribute="bottom" constant="20" id="0Hz-rV-q0j"/>
+                                <constraint firstAttribute="trailing" secondItem="gQi-3T-zRr" secondAttribute="trailing" constant="20" id="fS2-Xx-LFe"/>
+                                <constraint firstItem="gQi-3T-zRr" firstAttribute="top" secondItem="uzr-KH-aul" secondAttribute="top" constant="20" id="m4v-np-wYY"/>
+                                <constraint firstItem="gQi-3T-zRr" firstAttribute="leading" secondItem="uzr-KH-aul" secondAttribute="leading" constant="20" id="rEr-Bv-yRc"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="gQi-3T-zRr" firstAttribute="centerY" secondItem="cTp-Bs-idy" secondAttribute="centerY" constant="-64" id="Ivb-os-wka"/>
-                        <constraint firstItem="gQi-3T-zRr" firstAttribute="leading" secondItem="cTp-Bs-idy" secondAttribute="leading" constant="20" id="L8M-Pr-wVk"/>
-                        <constraint firstAttribute="trailing" secondItem="gQi-3T-zRr" secondAttribute="trailing" constant="20" id="keO-qw-8Yf"/>
-                        <constraint firstItem="gQi-3T-zRr" firstAttribute="centerX" secondItem="cTp-Bs-idy" secondAttribute="centerX" id="xgr-J5-PFe"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hoi-T9-iDe" userLabel="CategoriesContainerView">
-                    <rect key="frame" x="0.0" y="603" width="375" height="64"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="64" id="BHa-ko-T5O"/>
+                        <constraint firstAttribute="bottom" secondItem="Hoi-T9-iDe" secondAttribute="bottom" id="7gh-SZ-3qw"/>
+                        <constraint firstAttribute="bottom" secondItem="uzr-KH-aul" secondAttribute="bottom" constant="64" id="Eot-3S-lOi"/>
+                        <constraint firstItem="Hoi-T9-iDe" firstAttribute="leading" secondItem="6q6-2g-tqt" secondAttribute="leading" id="LVt-gN-5Jc"/>
+                        <constraint firstAttribute="trailing" secondItem="uzr-KH-aul" secondAttribute="trailing" id="QZK-Eg-Kmr"/>
+                        <constraint firstItem="cTp-Bs-idy" firstAttribute="top" secondItem="6q6-2g-tqt" secondAttribute="top" id="bqo-j3-nXa"/>
+                        <constraint firstAttribute="trailing" secondItem="Hoi-T9-iDe" secondAttribute="trailing" id="cxx-S4-9bZ"/>
+                        <constraint firstItem="cTp-Bs-idy" firstAttribute="leading" secondItem="6q6-2g-tqt" secondAttribute="leading" id="iXu-fK-SYh"/>
+                        <constraint firstAttribute="trailing" secondItem="cTp-Bs-idy" secondAttribute="trailing" id="mdL-To-4dn"/>
+                        <constraint firstAttribute="bottom" secondItem="cTp-Bs-idy" secondAttribute="bottom" constant="154" id="oRi-3G-52o"/>
+                        <constraint firstItem="uzr-KH-aul" firstAttribute="leading" secondItem="6q6-2g-tqt" secondAttribute="leading" id="t0s-18-u4n"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="cTp-Bs-idy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3jP-ed-egz"/>
-                <constraint firstAttribute="bottom" secondItem="cTp-Bs-idy" secondAttribute="bottom" constant="64" id="9TJ-16-uel"/>
-                <constraint firstAttribute="trailing" secondItem="cTp-Bs-idy" secondAttribute="trailing" id="DX6-Nf-OaQ"/>
-                <constraint firstAttribute="trailing" secondItem="Hoi-T9-iDe" secondAttribute="trailing" id="WS9-nd-6zA"/>
-                <constraint firstAttribute="bottom" secondItem="Hoi-T9-iDe" secondAttribute="bottom" id="lCC-8P-sL0"/>
-                <constraint firstItem="cTp-Bs-idy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nOV-36-K0U"/>
-                <constraint firstItem="Hoi-T9-iDe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="naW-vQ-hN7"/>
+                <constraint firstItem="6q6-2g-tqt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Kvx-rK-Mtk"/>
+                <constraint firstItem="6q6-2g-tqt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="MGQ-zf-zAf"/>
+                <constraint firstAttribute="bottom" secondItem="6q6-2g-tqt" secondAttribute="bottom" id="MnX-eW-jfr"/>
+                <constraint firstAttribute="trailing" secondItem="6q6-2g-tqt" secondAttribute="trailing" id="P4h-Ba-C2N"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>

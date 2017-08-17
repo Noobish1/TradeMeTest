@@ -1,6 +1,8 @@
 import UIKit
 import SnapKit
 import RxSwift
+import KeyboardObserver
+import Then
 
 fileprivate enum CategoriesAnimation {
     case present
@@ -37,6 +39,8 @@ internal final class RootViewController: UIViewController {
     @IBOutlet private weak var categoriesContainerView: UIView!
     @IBOutlet private weak var searchField: UITextField!
     @IBOutlet private weak var categoriesHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var containerBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var searchContainerView: UIView!
     // MARK: properties
     private lazy var categoriesView: CategoriesView = {
         CategoriesView(parentVC: self, onTap: { [weak self] in
@@ -53,6 +57,9 @@ internal final class RootViewController: UIViewController {
             return strongSelf.doneButtonPressed()
         })
     }()
+    private let keyboard = KeyboardObserver().then {
+        $0.isEnabled = false
+    }
     
     // MARK: init/deinit
     internal init() {
@@ -77,6 +84,35 @@ internal final class RootViewController: UIViewController {
         super.viewDidLoad()
         
         setupCategoriesView()
+        
+        keyboard.observe { event in
+            switch event.type {
+                case .willChangeFrame:
+                    let bottomConstant = (event.keyboardFrameEnd.height - (self.view.frame.maxY - self.searchContainerView.frame.maxY))
+                    
+                    self.containerBottomConstraint.constant = bottomConstant
+                    
+                    UIView.animate(withDuration: event.duration, delay: 0, options: [event.options], animations: {
+                        self.view.setNeedsLayout()
+                        self.view.layoutIfNeeded()
+                    })
+                    break
+                default:
+                    break
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        keyboard.isEnabled = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        keyboard.isEnabled = false
     }
     
     // MARK: interface actions
