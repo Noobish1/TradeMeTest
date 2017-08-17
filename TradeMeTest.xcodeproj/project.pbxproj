@@ -48,7 +48,7 @@
 		75D28F9A1F4520B300F5AD86 /* NoSubCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSubCategoriesViewController.swift; sourceTree = "<group>"; };
 		75D28F9B1F4520B300F5AD86 /* NoSubCategoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoSubCategoriesViewController.xib; sourceTree = "<group>"; };
 		75D28F9E1F4542FD00F5AD86 /* CategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
-		75D28FA11F4547D300F5AD86 /* Singular.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Singular.swift; path = Objects/Singular.swift; sourceTree = "<group>"; };
+		75D28FA11F4547D300F5AD86 /* Singular.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Singular.swift; path = Singular.swift; sourceTree = "<group>"; };
 		75D28FA31F454B0B00F5AD86 /* CategoriesButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesButton.swift; sourceTree = "<group>"; };
 		75F80FC21F43C3E200F8C3FD /* TradeMeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TradeMeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F80FC51F43C3E200F8C3FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +107,29 @@
 				75D28FA11F4547D300F5AD86 /* Singular.swift */,
 			);
 			name = Objects;
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		75D28FA51F4588A600F5AD86 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				75D28FA31F454B0B00F5AD86 /* CategoriesButton.swift */,
+				75D28F9E1F4542FD00F5AD86 /* CategoriesView.swift */,
+				75F810201F43F88100F8C3FD /* CategoryTableViewCell.swift */,
+			);
+			name = Categories;
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		75D28FA61F4588B200F5AD86 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				75F810161F43F5F500F8C3FD /* CustomTableViewCell.swift */,
+				75F810141F43F56400F8C3FD /* CustomView.swift */,
+				75F810181F43F63900F8C3FD /* CustomViewModelTableViewCell.swift */,
+			);
+			name = Reusable;
+			path = Reusable;
 			sourceTree = "<group>";
 		};
 		75F80FB91F43C3E200F8C3FD = {
@@ -133,11 +156,11 @@
 		75F80FC41F43C3E200F8C3FD /* TradeMeTest */ = {
 			isa = PBXGroup;
 			children = (
-				75D28FA01F4547C300F5AD86 /* Objects */,
 				75F80FD81F43C68300F8C3FD /* Application */,
 				75F80FED1F43D60000F8C3FD /* Environment */,
 				75F810021F43EC0800F8C3FD /* Models */,
 				75F80FE51F43CDD000F8C3FD /* Networking */,
+				75D28FA01F4547C300F5AD86 /* Objects */,
 				75F80FD71F43C67300F8C3FD /* Supporting Files */,
 				75F80FE21F43CA9000F8C3FD /* ViewControllers */,
 				75F8101D1F43F7D300F8C3FD /* ViewModels */,
@@ -170,10 +193,10 @@
 			children = (
 				75F810241F43FDA700F8C3FD /* Protocols */,
 				75F80FE31F43CAD900F8C3FD /* CategoryViewController.swift */,
-				75F810291F44352A00F8C3FD /* RootViewController.swift */,
-				75F8102A1F44352A00F8C3FD /* RootViewController.xib */,
 				75D28F9A1F4520B300F5AD86 /* NoSubCategoriesViewController.swift */,
 				75D28F9B1F4520B300F5AD86 /* NoSubCategoriesViewController.xib */,
+				75F810291F44352A00F8C3FD /* RootViewController.swift */,
+				75F8102A1F44352A00F8C3FD /* RootViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -274,12 +297,8 @@
 		75F810131F43F54600F8C3FD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				75F810201F43F88100F8C3FD /* CategoryTableViewCell.swift */,
-				75F810161F43F5F500F8C3FD /* CustomTableViewCell.swift */,
-				75F810141F43F56400F8C3FD /* CustomView.swift */,
-				75F810181F43F63900F8C3FD /* CustomViewModelTableViewCell.swift */,
-				75D28F9E1F4542FD00F5AD86 /* CategoriesView.swift */,
-				75D28FA31F454B0B00F5AD86 /* CategoriesButton.swift */,
+				75D28FA51F4588A600F5AD86 /* Categories */,
+				75D28FA61F4588B200F5AD86 /* Reusable */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
