@@ -17,10 +17,10 @@ internal final class CategoryViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let needsInitialLoad: Bool
     // TODO: pass back a CategoryViewModel
-    fileprivate let onDone: () -> Void
+    fileprivate let onDone: () -> Completable
     
     // MARK: init/deinit
-    internal init(title: String, viewModels: [CategoryViewModel], onDone: @escaping () -> Void) {
+    internal init(title: String, viewModels: [CategoryViewModel], onDone: @escaping () -> Completable) {
         self.onDone = onDone
         self.needsInitialLoad = viewModels.isEmpty
         self.dataSource = SimpleViewModelDataSource<CategoryTableViewCell>(viewModels: viewModels)
@@ -89,7 +89,7 @@ internal final class CategoryViewController: UIViewController {
     
     @objc
     private func doneButtonPressed() {
-        onDone()
+        _ = onDone().subscribe()
     }
 }
 
@@ -102,7 +102,13 @@ extension CategoryViewController: UITableViewDelegate {
             
             self.navigationController?.pushViewController(rootVC, animated: true)
         } else {
-            onDone()
+            _ = onDone().subscribe(onCompleted: { [weak self] in
+                guard let strongSelf = self else { return }
+                
+                let noSubCategoriesVC = NoSubCategoriesViewController(title: viewModel.name, onDone: strongSelf.onDone)
+                
+                strongSelf.navigationController?.pushViewController(noSubCategoriesVC, animated: false)
+            })
         }
     }
     

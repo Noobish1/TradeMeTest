@@ -1,5 +1,29 @@
 import UIKit
 import SnapKit
+import RxSwift
+
+fileprivate enum CategoriesAnimation {
+    case present
+    case dismiss
+    
+    fileprivate var duration: TimeInterval {
+        return 0.35
+    }
+    
+    fileprivate var navBarAlpha: CGFloat {
+        switch self {
+            case .present: return 0
+            case .dismiss: return 1
+        }
+    }
+    
+    fileprivate var categoriesButtonEnabledAfter: Bool {
+        switch self {
+            case .present: return false
+            case .dismiss: return true
+        }
+    }
+}
 
 internal final class RootViewController: UIViewController {
     // MARK: outlets
@@ -10,15 +34,25 @@ internal final class RootViewController: UIViewController {
         let initialTitle = NSLocalizedString("Categories", comment: "")
         
         return CategoryViewController(title: initialTitle, viewModels: [], onDone: { [weak self] in
-            guard let strongSelf = self else { return }
+            guard let strongSelf = self else {
+                return .empty()
+            }
             
-            strongSelf.doneButtonPressed()
+            return strongSelf.doneButtonPressed()
         })
     }()
     private let categoriesButton = UIButton().then {
         $0.setTitle("", for: .normal)
         $0.addTarget(self, action: #selector(categoriesButtonPressed), for: .touchUpInside)
     }
+    private let categoriesNavBar = UINavigationBar().then {
+        let navItem = UINavigationItem(title: NSLocalizedString("Categories", comment: ""))
+        
+        $0.setItems([navItem], animated: false)
+    }
+    // MARK: constants
+    private final let handHoldHeight: CGFloat = 20
+    private final let categoryVCHeight: CGFloat = 44 * 7
     
     // MARK: init/deinit
     internal init() {
@@ -28,9 +62,6 @@ internal final class RootViewController: UIViewController {
     internal required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private let handHoldHeight: CGFloat = 20
-    private let categoryVCHeight: CGFloat = 44 * 7
     
     internal override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +110,15 @@ internal final class RootViewController: UIViewController {
         self.addChildViewController(navVC)
         navVC.didMove(toParentViewController: self)
         
+        categoriesContainerView.addSubview(categoriesNavBar)
+        
+        categoriesNavBar.snp.makeConstraints { make in
+            make.top.equalTo(categoryHandholdContainerView.snp.bottom)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(44)
+        }
+        
         categoriesContainerView.addSubview(categoriesButton)
         
         categoriesButton.snp.makeConstraints { make in
@@ -89,24 +129,37 @@ internal final class RootViewController: UIViewController {
     // MARK: interface actions
     @objc
     private func categoriesButtonPressed() {
-        self.categoriesHeightConstraint.constant = self.categoryVCHeight + self.handHoldHeight
+        categoriesHeightConstraint.constant = self.categoryVCHeight + self.handHoldHeight
         
-        UIView.animate(withDuration: 0.35, animations: {
-            self.view.setNeedsLayout()
-            self.view.layoutIfNeeded()
-        }, completion: { _ in
-            self.categoriesButton.isUserInteractionEnabled = false
-        })
+        performCategoriesAnimation(.present, completion: nil)
     }
     
-    private func doneButtonPressed() {
-        self.categoriesHeightConstraint.constant = 64
-        
-        UIView.animate(withDuration: 0.35, animations: {
+    private func doneButtonPressed() -> Completable {
+        return .create { [weak self] observer in
+            guard let strongSelf = self else {
+                return Disposables.create()
+            }
+            
+            strongSelf.categoriesHeightConstraint.constant = 64
+            
+            strongSelf.performCategoriesAnimation(.dismiss, completion: {
+                observer(.completed)
+            })
+            
+            return Disposables.create()
+        }
+    }
+    
+    // MARK: animations
+    private func performCategoriesAnimation(_ animation: CategoriesAnimation, completion: (() -> Void)?) {
+        UIView.animate(withDuration: animation.duration, animations: {
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
+            self.categoriesNavBar.alpha = animation.navBarAlpha
         }, completion: { _ in
-            self.categoriesButton.isUserInteractionEnabled = true
+            self.categoriesButton.isUserInteractionEnabled = animation.categoriesButtonEnabledAfter
+            
+            completion?()
         })
     }
 }
