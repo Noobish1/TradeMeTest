@@ -1,7 +1,6 @@
-import Foundation
 import UIKit
 
-internal final class SimpleViewModelDataSource<Cell: CustomViewModelCell>: NSObject, UITableViewDataSource where Cell: UITableViewCell {
+internal final class SimpleTableViewModelDataSource<Cell: CustomViewModelCell>: NSObject, UITableViewDataSource where Cell: UITableViewCell {
     // MARK: properties
     private var viewModels: [Cell.ViewModel] = []
     

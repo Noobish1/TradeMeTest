@@ -34,8 +34,9 @@ fileprivate enum CategoriesAnimation {
     }
 }
 
-internal final class RootViewController: UIViewController {
+internal final class RootViewController: UIViewController, ContainerViewControllerProtocol {
     // MARK: outlets
+    @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var categoriesContainerView: UIView!
     @IBOutlet private weak var categoriesHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var containerBottomConstraint: NSLayoutConstraint!
@@ -55,6 +56,7 @@ internal final class RootViewController: UIViewController {
         })
     }()
     private let searchView = SearchView()
+    private let listingsContainerViewController = ListingsContainerViewController()
     private let keyboard = KeyboardObserver().then {
         $0.isEnabled = false
     }
@@ -96,11 +98,19 @@ internal final class RootViewController: UIViewController {
     
     private func setupObservers() {
         Observable
-            .combineLatest(searchView.observable, categoriesView.observable, resultSelector: { ($0, $1) })
-            .skip(1) // We skip the first as we don't want to do anything when nothing is selected/searched
-            .subscribe(onNext: { (searchString, category) in
-                print("Search for \(String(describing: searchString)) in category \(String(describing: category?.name))")
+            .combineLatest(searchView.observable, categoriesView.observable.map { $0?.number })
+            .map(SearchParams.init)
+            .nilFiltered()
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] params in
+                print("search with params: \(params)")
+                
+                self?.listingsContainerViewController.update(with: params)
             }).disposed(by: disposeBag)
+    }
+    
+    private func setupListingsView() {
+        setupInitialViewController(listingsContainerViewController, containerView: containerView)
     }
     
     // MARK: UIViewController
@@ -109,6 +119,7 @@ internal final class RootViewController: UIViewController {
         
         setupSearchView()
         setupCategoriesView()
+        setupListingsView()
         setupKeyboardObserver()
         setupObservers()
     }

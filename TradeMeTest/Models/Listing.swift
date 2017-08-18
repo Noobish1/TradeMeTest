@@ -3,7 +3,7 @@ import KeyedMapper
 
 internal struct Listing {
     internal let title: String
-    internal let imageURLString: String
+    internal let imageURLString: String?
 }
 
 extension Listing: Mappable {
@@ -14,6 +14,6 @@ extension Listing: Mappable {
     
     internal init(map: KeyedMapper<Listing>) throws {
         self.title = try map.from(.title)
-        self.imageURLString = try map.from(.imageURLString)
+        self.imageURLString = map.optionalFrom(.imageURLString)
     }
 }

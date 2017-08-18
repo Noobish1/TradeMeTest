@@ -4,7 +4,7 @@ import RxSwift
 
 internal final class CategoryViewController: UIViewController {
     // MARK: properties
-    fileprivate let dataSource: SimpleViewModelDataSource<CategoryTableViewCell>
+    fileprivate let dataSource: SimpleTableViewModelDataSource<CategoryTableViewCell>
     private lazy var tableView = UITableView(frame: UIScreen.main.bounds, style: .grouped).then {
         $0.dataSource = self.dataSource
         $0.delegate = self
@@ -21,7 +21,7 @@ internal final class CategoryViewController: UIViewController {
         self.viewModel = viewModel
         self.onDone = onDone
         self.needsInitialLoad = viewModel.subcategoires.isEmpty
-        self.dataSource = SimpleViewModelDataSource<CategoryTableViewCell>(viewModels: viewModel.subcategoires)
+        self.dataSource = SimpleTableViewModelDataSource<CategoryTableViewCell>(viewModels: viewModel.subcategoires)
             
         super.init(nibName: nil, bundle: nil)
         

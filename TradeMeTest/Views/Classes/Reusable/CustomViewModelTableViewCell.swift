@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 internal class CustomViewModelTableViewCell<ContentView, ViewModel>: UITableViewCell, CustomViewModelCell where ContentView: UIView {

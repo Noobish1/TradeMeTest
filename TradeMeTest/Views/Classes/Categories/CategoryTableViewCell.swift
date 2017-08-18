@@ -1,8 +1,8 @@
-import Foundation
 import UIKit
 import Then
 import SnapKit
 
+// MARK: CategoryTableViewCellContentView
 internal final class CategoryTableViewCellContentView: UIView {
     // MARK: properties
     fileprivate let nameLabel: UILabel = UILabel()
@@ -26,7 +26,9 @@ internal final class CategoryTableViewCellContentView: UIView {
     }
 }
 
+// MARK: CategoryTableViewCell
 internal final class CategoryTableViewCell: CustomViewModelTableViewCell<CategoryTableViewCellContentView, CategoryViewModel> {
+    // MARK: init/deinit
     internal required init(viewModel: CategoryViewModel) {
         super.init(viewModel: viewModel)
         
@@ -36,7 +38,8 @@ internal final class CategoryTableViewCell: CustomViewModelTableViewCell<Categor
     internal required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    // MARK: update
     internal override func update(with viewModel: CategoryViewModel) {
         self.accessoryType = viewModel.accessoryType
         

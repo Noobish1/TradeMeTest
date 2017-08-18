@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 internal class CustomView<ContentView>: UIView, CustomViewProtocol where ContentView: UIView {

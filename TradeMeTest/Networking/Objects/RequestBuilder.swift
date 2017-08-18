@@ -13,6 +13,8 @@ internal struct RequestBuilderDependencies {
 }
 
 internal final class RequestBuilder {
+    private static let consumerKey = "A1AC63F0332A131A78FAC304D007E7D1"
+    private static let consumerSecret = "EC7F18B17A062962C6930A8AE88B16C7"
     fileprivate static let manager: SessionManager = {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
@@ -24,7 +26,10 @@ internal final class RequestBuilder {
         return newManager
     }()
     
-    internal static let defaultHeaders = ["Accept" : "application/json"]
+    internal static let defaultHeaders = [
+        "Accept" : "application/json",
+        "Authorization": "OAuth oauth_consumer_key=\"\(consumerKey)\", oauth_signature_method=\"PLAINTEXT\", oauth_signature=\"\(consumerSecret)&\""
+    ]
     
     internal class func buildRequest(for endpoint: APIEndpoint, params: APIParameters? = nil,
                                      dependencies: RequestBuilderDependencies = .default) -> DataRequest {

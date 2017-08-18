@@ -17,4 +17,6 @@ target 'TradeMeTest' do
     pod 'SnapKit', '3.2.0'
     # Better Keyboard notifications
     pod 'KeyboardObserver', '1.1.0'
+    # Image loading
+    pod 'Kingfisher', '3.11.0'
 end

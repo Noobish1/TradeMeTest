@@ -13,6 +13,7 @@
                 <outlet property="categoriesContainerView" destination="Hoi-T9-iDe" id="4Lk-UP-BEI"/>
                 <outlet property="categoriesHeightConstraint" destination="BHa-ko-T5O" id="nxZ-cq-mLd"/>
                 <outlet property="containerBottomConstraint" destination="MnX-eW-jfr" id="WmD-3X-ty6"/>
+                <outlet property="containerView" destination="cTp-Bs-idy" id="GVq-Uf-hUy"/>
                 <outlet property="searchContainerView" destination="uzr-KH-aul" id="UJ0-ea-N3x"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,7 +26,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6q6-2g-tqt">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTp-Bs-idy" userLabel="ContainerView" customClass="UIScrollView">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTp-Bs-idy" userLabel="ContainerView">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="513"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>

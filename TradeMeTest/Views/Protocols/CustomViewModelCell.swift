@@ -1,6 +1,6 @@
 import Foundation
 
-internal protocol CustomViewModelCell: CustomTableViewCellProtocol {
+internal protocol CustomViewModelCell: CustomCellProtocol {
     associatedtype ViewModel
     
     init(viewModel: ViewModel)

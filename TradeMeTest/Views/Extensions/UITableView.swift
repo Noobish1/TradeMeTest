@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 internal extension UITableView {
@@ -9,7 +8,7 @@ internal extension UITableView {
         return cell
     }
     
-    internal func dequeueCustomReusableCell<T: CustomTableViewCellProtocol>(ofType: T.Type) -> T? {
+    internal func dequeueCustomReusableCell<T: CustomCellProtocol>(ofType: T.Type) -> T? {
         guard let rawCell = dequeueReusableCell(withIdentifier: T.identifier) else {
             return nil
         }
