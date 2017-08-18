@@ -79,28 +79,20 @@ internal final class RootViewController: UIViewController {
         }
     }
     
+    private func setupKeyboardObserver() {
+        keyboard.observe { [weak self] event in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.handleKeyboardEvent(event)
+        }
+    }
+    
     // MARK: UIViewController
     internal override func viewDidLoad() {
         super.viewDidLoad()
         
         setupCategoriesView()
-        
-        keyboard.observe { event in
-            switch event.type {
-                case .willChangeFrame:
-                    let bottomConstant = (event.keyboardFrameEnd.height - (self.view.frame.maxY - self.searchContainerView.frame.maxY))
-                    
-                    self.containerBottomConstraint.constant = bottomConstant
-                    
-                    UIView.animate(withDuration: event.duration, delay: 0, options: [event.options], animations: {
-                        self.view.setNeedsLayout()
-                        self.view.layoutIfNeeded()
-                    })
-                    break
-                default:
-                    break
-            }
-        }
+        setupKeyboardObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,6 +105,31 @@ internal final class RootViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         keyboard.isEnabled = false
+    }
+    
+    // MARK: keyboard handling
+    private func handleKeyboardEvent(_ event: KeyboardEvent) {
+        switch event.type {
+            case .willChangeFrame:
+                // We need to always start with the original search frame (ignoring the bottom constraint)
+                var originalSearchFrame = self.searchContainerView.frame
+                originalSearchFrame.origin.y += self.containerBottomConstraint.constant
+                
+                let searchFrame = self.view.convert(originalSearchFrame, to: nil)
+                let intersectFrame = searchFrame.intersection(event.keyboardFrameEnd)
+                let distanceBetweenSearchViewAndBottom = self.view.frame.maxY - originalSearchFrame.maxY
+                let bottomConstant = intersectFrame.isNull ? 0 : (event.keyboardFrameEnd.height - distanceBetweenSearchViewAndBottom)
+                
+                self.containerBottomConstraint.constant = bottomConstant
+                
+                UIView.animate(withDuration: event.duration, delay: 0, options: [event.options], animations: {
+                    self.view.setNeedsLayout()
+                    self.view.layoutIfNeeded()
+                })
+                break
+            case .willShow, .willHide, .didShow, .didHide, .didChangeFrame:
+                break
+        }
     }
     
     // MARK: interface actions
