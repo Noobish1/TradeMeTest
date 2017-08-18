@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,13 +30,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="513"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hoi-T9-iDe" userLabel="CategoriesContainerView">
-                            <rect key="frame" x="0.0" y="603" width="375" height="64"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="64" id="BHa-ko-T5O"/>
-                            </constraints>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzr-KH-aul">
                             <rect key="frame" x="0.0" y="513" width="375" height="90"/>
                             <subviews>
@@ -60,6 +52,13 @@
                                 <constraint firstAttribute="trailing" secondItem="gQi-3T-zRr" secondAttribute="trailing" constant="20" id="fS2-Xx-LFe"/>
                                 <constraint firstItem="gQi-3T-zRr" firstAttribute="top" secondItem="uzr-KH-aul" secondAttribute="top" constant="20" id="m4v-np-wYY"/>
                                 <constraint firstItem="gQi-3T-zRr" firstAttribute="leading" secondItem="uzr-KH-aul" secondAttribute="leading" constant="20" id="rEr-Bv-yRc"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hoi-T9-iDe" userLabel="CategoriesContainerView">
+                            <rect key="frame" x="0.0" y="603" width="375" height="64"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="64" id="BHa-ko-T5O"/>
                             </constraints>
                         </view>
                     </subviews>
