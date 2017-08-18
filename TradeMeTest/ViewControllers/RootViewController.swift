@@ -37,7 +37,6 @@ fileprivate enum CategoriesAnimation {
 internal final class RootViewController: UIViewController {
     // MARK: outlets
     @IBOutlet private weak var categoriesContainerView: UIView!
-    @IBOutlet private weak var searchField: UITextField!
     @IBOutlet private weak var categoriesHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var containerBottomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var searchContainerView: UIView!
@@ -57,6 +56,7 @@ internal final class RootViewController: UIViewController {
             return strongSelf.doneButtonPressed()
         })
     }()
+    private let searchView = SearchView()
     private let keyboard = KeyboardObserver().then {
         $0.isEnabled = false
     }
@@ -71,6 +71,14 @@ internal final class RootViewController: UIViewController {
     }
     
     // MARK: setup
+    private func setupSearchView() {
+        searchContainerView.addSubview(searchView)
+        
+        searchView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
     private func setupCategoriesView() {
         categoriesContainerView.addSubview(categoriesView)
         
@@ -91,6 +99,7 @@ internal final class RootViewController: UIViewController {
     internal override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupSearchView()
         setupCategoriesView()
         setupKeyboardObserver()
     }
@@ -164,13 +173,5 @@ internal final class RootViewController: UIViewController {
             
             completion?()
         })
-    }
-}
-
-extension RootViewController: UITextFieldDelegate {
-    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
-        return true
     }
 }

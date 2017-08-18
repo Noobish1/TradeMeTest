@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12120"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,7 +14,6 @@
                 <outlet property="categoriesHeightConstraint" destination="BHa-ko-T5O" id="nxZ-cq-mLd"/>
                 <outlet property="containerBottomConstraint" destination="MnX-eW-jfr" id="WmD-3X-ty6"/>
                 <outlet property="searchContainerView" destination="uzr-KH-aul" id="UJ0-ea-N3x"/>
-                <outlet property="searchField" destination="gQi-3T-zRr" id="TuR-hy-zbr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -32,26 +31,9 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzr-KH-aul">
                             <rect key="frame" x="0.0" y="513" width="375" height="90"/>
-                            <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Search" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gQi-3T-zRr">
-                                    <rect key="frame" x="20" y="20" width="335" height="50"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="Ae7-A4-dsO"/>
-                                    </constraints>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="efD-Kf-8h3"/>
-                                    </connections>
-                                </textField>
-                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="gQi-3T-zRr" secondAttribute="bottom" constant="20" id="0Hz-rV-q0j"/>
-                                <constraint firstAttribute="trailing" secondItem="gQi-3T-zRr" secondAttribute="trailing" constant="20" id="fS2-Xx-LFe"/>
-                                <constraint firstItem="gQi-3T-zRr" firstAttribute="top" secondItem="uzr-KH-aul" secondAttribute="top" constant="20" id="m4v-np-wYY"/>
-                                <constraint firstItem="gQi-3T-zRr" firstAttribute="leading" secondItem="uzr-KH-aul" secondAttribute="leading" constant="20" id="rEr-Bv-yRc"/>
+                                <constraint firstAttribute="height" constant="90" placeholder="YES" id="QIL-TU-hyW"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hoi-T9-iDe" userLabel="CategoriesContainerView">
