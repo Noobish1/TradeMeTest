@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import RxSwift
 
 // MARK: SearchView
 internal final class SearchView: UIView {
@@ -14,6 +15,10 @@ internal final class SearchView: UIView {
         $0.placeholder = NSLocalizedString("Search", comment: "")
         $0.font = .systemFont(ofSize: 23)
         $0.textAlignment = .center
+    }
+    fileprivate let behaviorSubject = BehaviorSubject<String?>(value: nil)
+    internal var observable: Observable<String?> {
+        return behaviorSubject.asObservable()
     }
     
     // MARK: init/deinit
@@ -37,6 +42,8 @@ internal final class SearchView: UIView {
 extension SearchView: UITextFieldDelegate {
     internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        
+        behaviorSubject.onNext(textField.text)
         
         return true
     }

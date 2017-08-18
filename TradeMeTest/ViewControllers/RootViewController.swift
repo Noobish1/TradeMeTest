@@ -46,12 +46,10 @@ internal final class RootViewController: UIViewController {
             guard let strongSelf = self else { return }
             
             strongSelf.categoriesButtonPressed()
-        }, onDone: { [weak self] viewModel -> Completable in
+        }, onDone: { [weak self] in
             guard let strongSelf = self else {
                 return .empty()
             }
-            
-            print("\(viewModel.name) selected!")
             
             return strongSelf.doneButtonPressed()
         })
@@ -60,6 +58,7 @@ internal final class RootViewController: UIViewController {
     private let keyboard = KeyboardObserver().then {
         $0.isEnabled = false
     }
+    private let disposeBag = DisposeBag()
     
     // MARK: init/deinit
     internal init() {
@@ -95,6 +94,15 @@ internal final class RootViewController: UIViewController {
         }
     }
     
+    private func setupObservers() {
+        Observable
+            .combineLatest(searchView.observable, categoriesView.observable, resultSelector: { ($0, $1) })
+            .skip(1) // We skip the first as we don't want to do anything when nothing is selected/searched
+            .subscribe(onNext: { (searchString, category) in
+                print("Search for \(String(describing: searchString)) in category \(String(describing: category?.name))")
+            }).disposed(by: disposeBag)
+    }
+    
     // MARK: UIViewController
     internal override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +110,7 @@ internal final class RootViewController: UIViewController {
         setupSearchView()
         setupCategoriesView()
         setupKeyboardObserver()
+        setupObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {

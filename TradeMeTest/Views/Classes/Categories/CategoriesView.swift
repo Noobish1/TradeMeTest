@@ -40,12 +40,16 @@ internal final class CategoriesView: UIView {
     private let viewControllerContainerView = UIView()
     private let initialFetch = Singular()
     private let disposeBag = DisposeBag()
-    private let onDone: (CategoryViewModel) -> Completable
+    private let onDone: () -> Completable
     private let onTap: () -> Void
     private weak var parentVC: UIViewController?
+    private let behaviorSubject = BehaviorSubject<CategoryViewModel?>(value: nil)
+    internal var observable: Observable<CategoryViewModel?> {
+        return behaviorSubject.asObservable()
+    }
 
     // MARK: init/deinit
-    internal init(state: CategoriesViewState = .loading, parentVC: UIViewController, onTap: @escaping () -> Void, onDone: @escaping (CategoryViewModel) -> Completable) {
+    internal init(state: CategoriesViewState = .loading, parentVC: UIViewController, onTap: @escaping () -> Void, onDone: @escaping () -> Completable) {
         self.state = state
         self.parentVC = parentVC
         self.onTap = onTap
@@ -93,7 +97,11 @@ internal final class CategoriesView: UIView {
                 
                 switch event {
                     case .success(let categoryVM):
-                        let categoryVC = CategoryViewController(viewModel: categoryVM, onDone: strongSelf.onDone)
+                        let categoryVC = CategoryViewController(viewModel: categoryVM, onDone: { viewModel in
+                            strongSelf.behaviorSubject.onNext(viewModel)
+                            
+                            return strongSelf.onDone()
+                        })
                         
                         strongSelf.transition(to: .loaded(categoryVC))
                     case .error:
