@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,13 +19,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-subcategories" translatesAutoresizingMaskIntoConstraints="NO" id="MQm-vD-nXc">
-                    <rect key="frame" x="20" y="139" width="335" height="388"/>
+                    <rect key="frame" x="20" y="20" width="335" height="627"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="MQm-vD-nXc" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="FEm-Bm-1Ab"/>
-                <constraint firstItem="MQm-vD-nXc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ym1-Ti-MMn"/>
+                <constraint firstAttribute="bottom" secondItem="MQm-vD-nXc" secondAttribute="bottom" constant="20" id="SSY-xm-68q"/>
+                <constraint firstItem="MQm-vD-nXc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Sr1-ph-skv"/>
                 <constraint firstItem="MQm-vD-nXc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="jcs-gr-6Sp"/>
                 <constraint firstAttribute="trailing" secondItem="MQm-vD-nXc" secondAttribute="trailing" constant="20" id="wPx-jD-GKJ"/>
             </constraints>
