@@ -147,7 +147,7 @@ internal final class RootViewController: UIViewController, ContainerViewControll
                 let searchFrame = self.view.convert(originalSearchFrame, to: nil)
                 let intersectFrame = searchFrame.intersection(event.keyboardFrameEnd)
                 let distanceBetweenSearchViewAndBottom = self.view.frame.maxY - originalSearchFrame.maxY
-                let bottomConstant = intersectFrame.isNull ? 0 : (event.keyboardFrameEnd.height - distanceBetweenSearchViewAndBottom)
+                let bottomConstant = (intersectFrame.isNull || intersectFrame.height == 0) ? 0 : (event.keyboardFrameEnd.height - distanceBetweenSearchViewAndBottom)
                 
                 self.containerBottomConstraint.constant = bottomConstant
                 
