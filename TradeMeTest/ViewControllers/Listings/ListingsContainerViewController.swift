@@ -7,6 +7,7 @@ internal enum ListingsContainerViewControllerState {
     case loading(ListingsLoadingViewController)
     case loaded(ListingsViewController)
     case failedToLoad(ListingsErrorViewController)
+    case noResults(ListingsNoResultsViewController)
     
     fileprivate var viewController: UIViewController {
         switch self {
@@ -14,6 +15,7 @@ internal enum ListingsContainerViewControllerState {
             case .loading(let vc): return vc
             case .loaded(let vc): return vc
             case .failedToLoad(let vc): return vc
+            case .noResults(let vc): return vc
         }
     }
 }
@@ -60,7 +62,11 @@ internal final class ListingsContainerViewController: UIViewController, Containe
         APIClient.shared.search(params: searchParams)
             .map { $0.listings.map(ListingViewModel.init) }
             .subscribe(onSuccess: { [weak self] listings in
-                self?.transition(to: .loaded(ListingsViewController(listings: listings)))
+                if listings.isEmpty {
+                    self?.transition(to: .noResults(ListingsNoResultsViewController()))
+                } else {
+                    self?.transition(to: .loaded(ListingsViewController(listings: listings)))
+                }
             }, onError: { [weak self] _ in
                 self?.transition(to: .failedToLoad(ListingsErrorViewController()))
             })
