@@ -18,13 +18,6 @@ fileprivate extension CategoriesViewState {
         }
     }
     
-    fileprivate var userInteractionEnabled: Bool {
-        switch self {
-            case .loading: return false
-            case .loaded, .failedToLoad: return true
-        }
-    }
-    
     fileprivate var activityIndictorZeroWidthPriority: UILayoutPriority {
         switch self {
             case .loading: return UILayoutPriorityDefaultLow
@@ -43,8 +36,8 @@ fileprivate extension CategoriesViewState {
 // MARK: CategoriesButton
 internal final class CategoriesButton: UIControl {
     // MARK: properties
-    private let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-    private let textLabel: UILabel
+    internal let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    internal let textLabel: UILabel
     private var activityIndicatorWidthConstraint: Constraint!
     
     // MARK: init/deinit
@@ -95,7 +88,6 @@ internal final class CategoriesButton: UIControl {
     // MARK: transition
     internal func transition(to state: CategoriesViewState) {
         self.backgroundColor = state.backgroundColor
-        self.isUserInteractionEnabled = state.userInteractionEnabled
         
         textLabel.text = state.title
         

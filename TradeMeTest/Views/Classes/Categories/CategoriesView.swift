@@ -11,8 +11,16 @@ internal enum CategoriesViewPosition {
     case open
     case collapsed
     
-    fileprivate static var handHoldHeight: CGFloat {
+    fileprivate static var handHoldWidth: CGFloat {
         return 20
+    }
+    
+    fileprivate static var handHoldContainerHeight: CGFloat {
+        return 20
+    }
+    
+    fileprivate static var handholdHeight: CGFloat {
+        return 4
     }
     
     fileprivate static var openVCHeight: CGFloat {
@@ -21,8 +29,8 @@ internal enum CategoriesViewPosition {
     
     internal var height: CGFloat {
         switch self {
-            case .open: return type(of: self).handHoldHeight + type(of: self).openVCHeight
-            case .collapsed: return type(of: self).handHoldHeight + 44
+            case .open: return type(of: self).handHoldWidth + type(of: self).openVCHeight
+            case .collapsed: return type(of: self).handHoldWidth + 44
         }
     }
 }
@@ -30,6 +38,7 @@ internal enum CategoriesViewPosition {
 internal final class CategoriesView: UIView {
     // MARK: properties
     private var state: CategoriesViewState
+    private let topContainerView = UIView()
     private let categoriesButton: CategoriesButton
     private let categoriesNavBar = UINavigationBar().then {
         let navItem = UINavigationItem(title: NSLocalizedString("Categories", comment: ""))
@@ -136,8 +145,8 @@ internal final class CategoriesView: UIView {
         categoriesNavBar.alpha = value
     }
     
-    internal func updateButtonUserInteractionEnabled(to value: Bool) {
-        categoriesButton.isUserInteractionEnabled = value
+    internal func updateTopContainerUserInteractionEnabled(to value: Bool) {
+        topContainerView.isUserInteractionEnabled = value
     }
     
     // MARK: setup
@@ -160,6 +169,42 @@ internal final class CategoriesView: UIView {
     }
     
     private func setupViews() {
+        self.addSubview(topContainerView)
+        
+        let innerContainerView = UIView()
+        innerContainerView.clipsToBounds = true
+        
+        topContainerView.addSubview(innerContainerView)
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            topContainerView.snp.makeConstraints { make in
+                make.top.equalToSuperview()
+                make.leading.equalToSuperview()
+                make.bottom.equalToSuperview()
+                make.width.equalTo(64)
+            }
+            
+            innerContainerView.snp.makeConstraints { make in
+                make.width.equalTo(topContainerView.snp.height)
+                make.height.equalTo(topContainerView.snp.width)
+                make.center.equalToSuperview()
+            }
+            
+            let radians = CGFloat(-90 * Double.pi / 180)
+            innerContainerView.layer.transform = CATransform3DMakeRotation(radians, 0.0, 0.0, 1.0)
+        } else {
+            topContainerView.snp.makeConstraints { make in
+                make.top.equalToSuperview()
+                make.leading.equalToSuperview()
+                make.trailing.equalToSuperview()
+                make.height.equalTo(64)
+            }
+            
+            innerContainerView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+        }
+        
         let categoryHandholdContainerView = UIView()
         let categoryHandholdView = UIView().then {
             $0.backgroundColor = .darkGray
@@ -168,52 +213,61 @@ internal final class CategoriesView: UIView {
         categoryHandholdContainerView.addSubview(categoryHandholdView)
         
         categoryHandholdView.snp.makeConstraints { make in
-            make.width.equalTo(CategoriesViewPosition.handHoldHeight)
-            make.height.equalTo(4)
+            make.width.equalTo(CategoriesViewPosition.handHoldWidth)
+            make.height.equalTo(CategoriesViewPosition.handholdHeight)
             make.center.equalToSuperview()
         }
         
-        self.addSubview(categoryHandholdContainerView)
+        innerContainerView.addSubview(categoryHandholdContainerView)
         
         categoryHandholdContainerView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.height.equalTo(CategoriesViewPosition.handHoldHeight)
+            make.height.equalTo(CategoriesViewPosition.handHoldContainerHeight)
         }
         
-        setupViewControllerContainerView(below: categoryHandholdContainerView)
-        setupCategoriesNavBar(below: categoryHandholdContainerView)
-        setupCategoriesButton()
+        setupViewControllerContainerView(relativeTo: topContainerView)
+        setupCategoriesNavBar(below: categoryHandholdContainerView, in: innerContainerView)
+        setupCategoriesButton(in: innerContainerView)
     }
     
-    private func setupCategoriesButton() {
-        self.addSubview(categoriesButton)
+    private func setupCategoriesButton(in containerView: UIView) {
+        containerView.addSubview(categoriesButton)
         
         categoriesButton.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
     
-    private func setupCategoriesNavBar(below view: UIView) {
-        self.addSubview(categoriesNavBar)
+    private func setupCategoriesNavBar(below view: UIView, in containerView: UIView) {
+        containerView.addSubview(categoriesNavBar)
         
         categoriesNavBar.snp.makeConstraints { make in
             make.top.equalTo(view.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.height.equalTo(44)
+            make.bottom.equalToSuperview()
         }
     }
     
-    private func setupViewControllerContainerView(below view: UIView) {
-        self.addSubview(viewControllerContainerView)
+    private func setupViewControllerContainerView(relativeTo view: UIView) {
+        self.insertSubview(viewControllerContainerView, at: 0)
         
-        viewControllerContainerView.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.bottom)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.height.equalTo(CategoriesViewPosition.openVCHeight)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            viewControllerContainerView.snp.makeConstraints { make in
+                make.leading.equalTo(view.snp.trailing).inset(44)
+                make.top.equalToSuperview()
+                make.bottom.equalToSuperview()
+                make.width.equalTo(CategoriesViewPosition.openVCHeight)
+            }
+        } else {
+            viewControllerContainerView.snp.makeConstraints { make in
+                make.top.equalTo(view.snp.bottom).inset(44)
+                make.leading.equalToSuperview()
+                make.trailing.equalToSuperview()
+                make.height.equalTo(CategoriesViewPosition.openVCHeight)
+            }
         }
     }
 }

@@ -34,6 +34,7 @@
 		75D28FB01F4597BC00F5AD86 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D28FAF1F4597BC00F5AD86 /* Then.swift */; };
 		75DE3E001F47CD4800A8A6CF /* ListingsNoResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DE3DFE1F47CD4800A8A6CF /* ListingsNoResultsViewController.swift */; };
 		75DE3E011F47CD4800A8A6CF /* ListingsNoResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75DE3DFF1F47CD4800A8A6CF /* ListingsNoResultsViewController.xib */; };
+		75DE3E031F47FA4600A8A6CF /* RootViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75DE3E021F47FA4600A8A6CF /* RootViewController~ipad.xib */; };
 		75F80FC61F43C3E200F8C3FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F80FC51F43C3E200F8C3FD /* AppDelegate.swift */; };
 		75F80FCD1F43C3E200F8C3FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75F80FCC1F43C3E200F8C3FD /* Assets.xcassets */; };
 		75F80FDF1F43C71400F8C3FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75F80FCE1F43C3E200F8C3FD /* LaunchScreen.storyboard */; };
@@ -89,6 +90,7 @@
 		75D28FAF1F4597BC00F5AD86 /* Then.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		75DE3DFE1F47CD4800A8A6CF /* ListingsNoResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingsNoResultsViewController.swift; sourceTree = "<group>"; };
 		75DE3DFF1F47CD4800A8A6CF /* ListingsNoResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListingsNoResultsViewController.xib; sourceTree = "<group>"; };
+		75DE3E021F47FA4600A8A6CF /* RootViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "RootViewController~ipad.xib"; sourceTree = "<group>"; };
 		75F80FC21F43C3E200F8C3FD /* TradeMeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TradeMeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F80FC51F43C3E200F8C3FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75F80FCC1F43C3E200F8C3FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				75F810241F43FDA700F8C3FD /* Protocols */,
 				75F810291F44352A00F8C3FD /* RootViewController.swift */,
 				75F8102A1F44352A00F8C3FD /* RootViewController.xib */,
+				75DE3E021F47FA4600A8A6CF /* RootViewController~ipad.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				75F80FCD1F43C3E200F8C3FD /* Assets.xcassets in Resources */,
 				75D28F9D1F4520B300F5AD86 /* NoSubCategoriesViewController.xib in Resources */,
 				754557D21F46991E008C7C48 /* ListingsInitialViewController.xib in Resources */,
+				75DE3E031F47FA4600A8A6CF /* RootViewController~ipad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

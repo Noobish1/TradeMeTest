@@ -189,7 +189,7 @@ internal final class RootViewController: UIViewController, ContainerViewControll
             self.view.layoutIfNeeded()
             self.categoriesView.updateNavBarAlpha(to: animation.navBarAlpha)
         }, completion: { _ in
-            self.categoriesView.updateButtonUserInteractionEnabled(to: animation.categoriesButtonEnabledAfter)
+            self.categoriesView.updateTopContainerUserInteractionEnabled(to: animation.categoriesButtonEnabledAfter)
             
             completion?()
         })
