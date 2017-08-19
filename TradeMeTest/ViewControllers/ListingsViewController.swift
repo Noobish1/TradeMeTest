@@ -4,7 +4,7 @@ import SnapKit
 
 internal final class ListingsViewController: UIViewController {
     // MARK: properties
-    private lazy var collectionView: UICollectionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    private lazy var collectionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.register(ListingCollectionViewCell.self, forCellWithReuseIdentifier: ListingCollectionViewCell.identifier)
         $0.dataSource = self
         $0.delegate = self
@@ -22,27 +22,44 @@ internal final class ListingsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: UIViewController
-    internal override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    // MARK: setup
+    private func setupCollectionView() {
         self.view.addSubview(collectionView)
         
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        let layout = collectionViewLayout(for: self.view.frame.size)
+        self.collectionView.setCollectionViewLayout(layout, animated: false)
+    }
+    
+    // MARK: UIViewController
+    internal override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupCollectionView()
     }
     
     // MARK: rotation
     internal override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        let scrollDirection: UICollectionViewScrollDirection = size.width > size.height ? .horizontal : .vertical
+        let topIndexPath = collectionView.indexPathsForVisibleItems.first
         
         coordinator.animate(alongsideTransition: { _ in
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = scrollDirection
-            
+            let layout = self.collectionViewLayout(for: size)
             self.collectionView.setCollectionViewLayout(layout, animated: true)
-        }, completion: nil)
+            
+            if let topIndexPath = topIndexPath {
+                self.collectionView.scrollToItem(at: topIndexPath, at: .top, animated: true)
+            }
+        })
+    }
+    
+    // MARK: layout logic
+    private func collectionViewLayout(for size: CGSize) -> UICollectionViewFlowLayout {
+        return UICollectionViewFlowLayout().then {
+            $0.scrollDirection = size.width > size.height ? .horizontal : .vertical
+        }
     }
 }
 
