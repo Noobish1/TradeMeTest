@@ -4,15 +4,15 @@ import RxSwift
 
 internal final class CategoryViewController: UIViewController {
     // MARK: properties
-    fileprivate let dataSource: SimpleTableViewModelDataSource<CategoryTableViewCell>
     private lazy var tableView = UITableView(frame: UIScreen.main.bounds, style: .grouped).then {
-        $0.dataSource = self.dataSource
+        $0.dataSource = self
         $0.delegate = self
         $0.rowHeight = 44
         $0.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
     }
     private let disposeBag = DisposeBag()
     private let needsInitialLoad: Bool
+    fileprivate let categories: [CategoryViewModel]
     fileprivate let onDone: (CategoryViewModel) -> Completable
     fileprivate let viewModel: CategoryViewModel
     
@@ -21,7 +21,7 @@ internal final class CategoryViewController: UIViewController {
         self.viewModel = viewModel
         self.onDone = onDone
         self.needsInitialLoad = viewModel.subcategoires.isEmpty
-        self.dataSource = SimpleTableViewModelDataSource<CategoryTableViewCell>(viewModels: viewModel.subcategoires)
+        self.categories = viewModel.subcategoires
             
         super.init(nibName: nil, bundle: nil)
         
@@ -59,11 +59,21 @@ internal final class CategoryViewController: UIViewController {
     }
 }
 
+extension CategoryViewController: UITableViewDataSource {
+    internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categories.count
+    }
+    
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return tableView.dequeueAndUpdateReusableCell(ofType: CategoryTableViewCell.self, with: categories[indexPath.row])
+    }
+}
+
 extension CategoryViewController: UITableViewDelegate {
     internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let selectedViewModel = dataSource.viewModel(at: indexPath)
+        let selectedViewModel = categories[indexPath.row]
         
         if selectedViewModel.hasSubcategories {
             let rootVC = CategoryViewController(viewModel: selectedViewModel, onDone: onDone)

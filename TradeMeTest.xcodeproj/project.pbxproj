@@ -58,7 +58,6 @@
 		75F8101C1F43F72A00F8C3FD /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8101B1F43F72A00F8C3FD /* UITableView.swift */; };
 		75F8101F1F43F7FF00F8C3FD /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8101E1F43F7FF00F8C3FD /* CategoryViewModel.swift */; };
 		75F810211F43F88100F8C3FD /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F810201F43F88100F8C3FD /* CategoryTableViewCell.swift */; };
-		75F810261F43FDCC00F8C3FD /* SimpleTableViewModelDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F810251F43FDCC00F8C3FD /* SimpleTableViewModelDataSource.swift */; };
 		75F8102B1F44352A00F8C3FD /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F810291F44352A00F8C3FD /* RootViewController.swift */; };
 		75F8102C1F44352A00F8C3FD /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F8102A1F44352A00F8C3FD /* RootViewController.xib */; };
 		EE937A4AD266DB45473F2CCB /* Pods_TradeMeTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2CFEEEF4F9B7E17AA71BB85 /* Pods_TradeMeTest.framework */; };
@@ -121,7 +120,6 @@
 		75F8101B1F43F72A00F8C3FD /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		75F8101E1F43F7FF00F8C3FD /* CategoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		75F810201F43F88100F8C3FD /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
-		75F810251F43FDCC00F8C3FD /* SimpleTableViewModelDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTableViewModelDataSource.swift; sourceTree = "<group>"; };
 		75F810291F44352A00F8C3FD /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		75F8102A1F44352A00F8C3FD /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		855AAA6814D08D998E44E3FE /* Pods-TradeMeTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradeMeTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TradeMeTest/Pods-TradeMeTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -442,7 +440,6 @@
 		75F810241F43FDA700F8C3FD /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				75F810251F43FDCC00F8C3FD /* SimpleTableViewModelDataSource.swift */,
 				754557DB1F469D83008C7C48 /* ContainerViewControllerProtocol.swift */,
 			);
 			path = Protocols;
@@ -615,7 +612,6 @@
 				75F80FE41F43CAD900F8C3FD /* CategoryViewController.swift in Sources */,
 				754557F11F46D339008C7C48 /* UICollectionView.swift in Sources */,
 				75F810211F43F88100F8C3FD /* CategoryTableViewCell.swift in Sources */,
-				75F810261F43FDCC00F8C3FD /* SimpleTableViewModelDataSource.swift in Sources */,
 				75F80FC61F43C3E200F8C3FD /* AppDelegate.swift in Sources */,
 				75F810151F43F56400F8C3FD /* CustomView.swift in Sources */,
 				754557CA1F46738A008C7C48 /* SearchView.swift in Sources */,
