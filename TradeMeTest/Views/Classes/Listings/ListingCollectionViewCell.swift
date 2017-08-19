@@ -7,7 +7,7 @@ internal final class ListingCollectionViewCellContentView: UIView, NibCreatable 
     @IBOutlet fileprivate weak var titleLabel: UILabel!
 }
 
-internal final class ListingCollectionViewCell: CustomCollectionViewCell<ListingCollectionViewCellContentView> {
+internal final class ListingCollectionViewCell: NibBackedCollectionViewCell<ListingCollectionViewCellContentView> {
     
     // MARK: update
     internal func update(with viewModel: ListingViewModel) {

@@ -14,11 +14,11 @@ internal final class CategoryViewController: UIViewController {
     private let needsInitialLoad: Bool
     fileprivate let categories: [CategoryViewModel]
     fileprivate let onDone: (CategoryViewModel) -> Completable
-    fileprivate let viewModel: CategoryViewModel
+    fileprivate let category: CategoryViewModel
     
     // MARK: init/deinit
     internal init(viewModel: CategoryViewModel, onDone: @escaping (CategoryViewModel) -> Completable) {
-        self.viewModel = viewModel
+        self.category = viewModel
         self.onDone = onDone
         self.needsInitialLoad = viewModel.subcategoires.isEmpty
         self.categories = viewModel.subcategoires
@@ -55,7 +55,7 @@ internal final class CategoryViewController: UIViewController {
     
     @objc
     private func doneButtonPressed() {
-        _ = onDone(viewModel).subscribe()
+        _ = onDone(category).subscribe()
     }
 }
 
@@ -65,7 +65,19 @@ extension CategoryViewController: UITableViewDataSource {
     }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueAndUpdateReusableCell(ofType: CategoryTableViewCell.self, with: categories[indexPath.row])
+        let viewModel = categories[indexPath.row]
+        
+        guard let rawCell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier) else {
+            fatalError("Could not dequeue a CategoryTableViewCell")
+        }
+        
+        guard let typedCell = rawCell as? CategoryTableViewCell else {
+            fatalError("dequeue returned the wrong type")
+        }
+        
+        typedCell.update(with: viewModel)
+        
+        return typedCell
     }
 }
 

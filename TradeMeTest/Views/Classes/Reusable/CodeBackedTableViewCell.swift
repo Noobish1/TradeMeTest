@@ -1,6 +1,6 @@
 import UIKit
 
-internal class CustomTableViewCell<ContentView>: UITableViewCell, CustomCellProtocol where ContentView: UIView {
+internal class CodeBackedTableViewCell<ContentView>: UITableViewCell, CustomCellProtocol where ContentView: UIView {
     // MARK: properties
     internal lazy var innerContentView: ContentView = {
         type(of: self).createContentView()
