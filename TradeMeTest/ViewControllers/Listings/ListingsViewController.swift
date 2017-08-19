@@ -57,21 +57,39 @@ internal final class ListingsViewController: UIViewController {
     
     // MARK: layout logic
     private func collectionViewLayout(for size: CGSize) -> UICollectionViewFlowLayout {
-        return UICollectionViewFlowLayout().then {
-            $0.scrollDirection = size.width > size.height ? .horizontal : .vertical
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return UICollectionViewFlowLayout().then {
+                $0.minimumInteritemSpacing = 5
+                $0.minimumLineSpacing = 5
+            }
+        } else {
+            return UICollectionViewFlowLayout().then {
+                $0.minimumInteritemSpacing = 5
+                $0.minimumLineSpacing = 5
+                $0.scrollDirection = size.width > size.height ? .horizontal : .vertical
+            }
         }
     }
 }
 
 extension ListingsViewController: UICollectionViewDelegateFlowLayout {
     internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
+            fatalError("collectionViewLayout is not a UICollectionViewFlow")
+        }
         
-        if self.view.frame.width > self.view.frame.size.height {
-            // landscape
-            return CGSize(width: 250, height: self.view.frame.size.height)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let width = floor((self.view.frame.size.width - (flowLayout.minimumInteritemSpacing * 2))/3.0)
+            
+            return CGSize(width: width, height: width)
         } else {
-            // portrait
-            return CGSize(width: self.view.frame.width, height: 250)
+            if self.view.frame.width > self.view.frame.size.height {
+                // landscape
+                return CGSize(width: 250, height: self.view.frame.size.height)
+            } else {
+                // portrait
+                return CGSize(width: self.view.frame.width, height: 250)
+            }
         }
     }
 }

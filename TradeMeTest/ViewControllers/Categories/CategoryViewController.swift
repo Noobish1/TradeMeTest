@@ -8,6 +8,7 @@ internal final class CategoryViewController: UIViewController {
         $0.dataSource = self
         $0.delegate = self
         $0.rowHeight = 44
+        $0.cellLayoutMarginsFollowReadableWidth = false
         $0.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
     }
     private let disposeBag = DisposeBag()
