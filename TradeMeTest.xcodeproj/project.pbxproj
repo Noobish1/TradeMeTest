@@ -25,6 +25,7 @@
 		754557EF1F46CE19008C7C48 /* ListingCollectionViewCellContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 754557EE1F46CE19008C7C48 /* ListingCollectionViewCellContentView.xib */; };
 		75C47CDF1F4939170032CB99 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C47CDE1F4939170032CB99 /* UIImage.swift */; };
 		75C47CE31F49471D0032CB99 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C47CE21F49471D0032CB99 /* UIView.swift */; };
+		75C47CE51F495C5A0032CB99 /* ViewWithAContentViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C47CE41F495C5A0032CB99 /* ViewWithAContentViewProtocol.swift */; };
 		75D28F9C1F4520B300F5AD86 /* NoSubCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D28F9A1F4520B300F5AD86 /* NoSubCategoriesViewController.swift */; };
 		75D28F9D1F4520B300F5AD86 /* NoSubCategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75D28F9B1F4520B300F5AD86 /* NoSubCategoriesViewController.xib */; };
 		75D28F9F1F4542FD00F5AD86 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D28F9E1F4542FD00F5AD86 /* CategoriesView.swift */; };
@@ -81,8 +82,9 @@
 		754557EA1F46CBF5008C7C48 /* ListingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingCollectionViewCell.swift; sourceTree = "<group>"; };
 		754557EC1F46CCCD008C7C48 /* ListingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingViewModel.swift; sourceTree = "<group>"; };
 		754557EE1F46CE19008C7C48 /* ListingCollectionViewCellContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListingCollectionViewCellContentView.xib; sourceTree = "<group>"; };
-		75C47CDE1F4939170032CB99 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImage.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		75C47CE21F49471D0032CB99 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView.swift; path = UIView.swift; sourceTree = "<group>"; };
+		75C47CDE1F4939170032CB99 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		75C47CE21F49471D0032CB99 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		75C47CE41F495C5A0032CB99 /* ViewWithAContentViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewWithAContentViewProtocol.swift; sourceTree = "<group>"; };
 		75D28F9A1F4520B300F5AD86 /* NoSubCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSubCategoriesViewController.swift; sourceTree = "<group>"; };
 		75D28F9B1F4520B300F5AD86 /* NoSubCategoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoSubCategoriesViewController.xib; sourceTree = "<group>"; };
 		75D28F9E1F4542FD00F5AD86 /* CategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
@@ -206,7 +208,6 @@
 			children = (
 				75C47CDE1F4939170032CB99 /* UIImage.swift */,
 			);
-			name = UIKit;
 			path = UIKit;
 			sourceTree = "<group>";
 		};
@@ -215,7 +216,6 @@
 			children = (
 				75C47CE11F49470A0032CB99 /* UIKit */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -224,7 +224,6 @@
 			children = (
 				75C47CE21F49471D0032CB99 /* UIView.swift */,
 			);
-			name = UIKit;
 			path = UIKit;
 			sourceTree = "<group>";
 		};
@@ -435,6 +434,7 @@
 				75F8100F1F43F45400F8C3FD /* CustomCellProtocol.swift */,
 				75F8100B1F43F24B00F8C3FD /* CustomViewProtocol.swift */,
 				75F8100D1F43F32F00F8C3FD /* NibCreatable.swift */,
+				75C47CE41F495C5A0032CB99 /* ViewWithAContentViewProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -673,6 +673,7 @@
 				75F80FEF1F43D64300F8C3FD /* EnvironmentVariablesProtocol.swift in Sources */,
 				75F810041F43EC6400F8C3FD /* Category.swift in Sources */,
 				75D28F9F1F4542FD00F5AD86 /* CategoriesView.swift in Sources */,
+				75C47CE51F495C5A0032CB99 /* ViewWithAContentViewProtocol.swift in Sources */,
 				75F8100C1F43F24B00F8C3FD /* CustomViewProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
