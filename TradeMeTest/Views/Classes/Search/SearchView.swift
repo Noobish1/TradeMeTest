@@ -4,7 +4,7 @@ import RxSwift
 
 // MARK: SearchView
 internal final class SearchView: UIView {
-    // MARK: properties
+    // MARK: private properties
     private lazy var searchField = UITextField().then {
         $0.borderStyle = .line
         $0.returnKeyType = .search
@@ -16,6 +16,7 @@ internal final class SearchView: UIView {
         $0.textAlignment = .center
     }
     fileprivate let behaviorSubject = BehaviorSubject<String?>(value: nil)
+    // MARK: internal properties
     internal var observable: Observable<String?> {
         return behaviorSubject.asObservable()
     }
@@ -24,16 +25,21 @@ internal final class SearchView: UIView {
     internal init() {
         super.init(frame: .zero)
         
+        setupSearchField()
+    }
+    
+    internal required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: setup
+    private func setupSearchField() {
         self.addSubview(searchField)
         
         searchField.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(20)
             make.height.equalTo(50)
         }
-    }
-    
-    internal required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 
