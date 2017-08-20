@@ -81,8 +81,8 @@
 		754557EA1F46CBF5008C7C48 /* ListingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingCollectionViewCell.swift; sourceTree = "<group>"; };
 		754557EC1F46CCCD008C7C48 /* ListingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingViewModel.swift; sourceTree = "<group>"; };
 		754557EE1F46CE19008C7C48 /* ListingCollectionViewCellContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListingCollectionViewCellContentView.xib; sourceTree = "<group>"; };
-		75C47CDE1F4939170032CB99 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImage.swift; path = UIKit/UIImage.swift; sourceTree = "<group>"; };
-		75C47CE21F49471D0032CB99 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView.swift; path = Extensions/UIKit/UIView.swift; sourceTree = "<group>"; };
+		75C47CDE1F4939170032CB99 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImage.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		75C47CE21F49471D0032CB99 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIView.swift; path = UIView.swift; sourceTree = "<group>"; };
 		75D28F9A1F4520B300F5AD86 /* NoSubCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSubCategoriesViewController.swift; sourceTree = "<group>"; };
 		75D28F9B1F4520B300F5AD86 /* NoSubCategoriesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoSubCategoriesViewController.xib; sourceTree = "<group>"; };
 		75D28F9E1F4542FD00F5AD86 /* CategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
@@ -169,9 +169,9 @@
 				754557D01F46991E008C7C48 /* ListingsInitialViewController.xib */,
 				754557D31F469B8F008C7C48 /* ListingsLoadingViewController.swift */,
 				754557D41F469B8F008C7C48 /* ListingsLoadingViewController.xib */,
-				754557E31F46C808008C7C48 /* ListingsViewController.swift */,
 				75DE3DFE1F47CD4800A8A6CF /* ListingsNoResultsViewController.swift */,
 				75DE3DFF1F47CD4800A8A6CF /* ListingsNoResultsViewController.xib */,
+				754557E31F46C808008C7C48 /* ListingsViewController.swift */,
 			);
 			path = Listings;
 			sourceTree = "<group>";
@@ -207,6 +207,7 @@
 				75C47CDE1F4939170032CB99 /* UIImage.swift */,
 			);
 			name = UIKit;
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		75C47CE01F4946F40032CB99 /* Extensions */ = {
@@ -215,6 +216,7 @@
 				75C47CE11F49470A0032CB99 /* UIKit */,
 			);
 			name = Extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		75C47CE11F49470A0032CB99 /* UIKit */ = {
@@ -223,6 +225,7 @@
 				75C47CE21F49471D0032CB99 /* UIView.swift */,
 			);
 			name = UIKit;
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		75D28FA01F4547C300F5AD86 /* Objects */ = {
@@ -258,9 +261,9 @@
 		75D28FAD1F45979000F5AD86 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				75C47CDD1F4938FB0032CB99 /* UIKit */,
 				754557DD1F46A8ED008C7C48 /* RxSwift */,
 				75D28FAE1F45979A00F5AD86 /* Then */,
+				75C47CDD1F4938FB0032CB99 /* UIKit */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -419,8 +422,8 @@
 		75F810091F43F20700F8C3FD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				75C47CE01F4946F40032CB99 /* Extensions */,
 				75F810131F43F54600F8C3FD /* Classes */,
+				75C47CE01F4946F40032CB99 /* Extensions */,
 				75F8100A1F43F22600F8C3FD /* Protocols */,
 			);
 			path = Views;
