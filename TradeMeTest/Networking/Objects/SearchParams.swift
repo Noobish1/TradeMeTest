@@ -7,9 +7,8 @@ internal enum SearchParams {
     case categoryOnly(String)
     case searchAndCategory(search: String, category: String)
     
-    internal var imageSize: String {
-        return "Gallery"
-    }
+    internal var imageSize: String { return "Gallery" }
+    internal var numberOfResults: Int { return 20 }
     
     internal init?(search optionalSearch: String?, category optionalCategory: String?) {
         if let search = optionalSearch, !search.isEmpty {
@@ -32,20 +31,22 @@ extension SearchParams: KeyedAPIParameters {
         case searchString = "search_string"
         case category
         case imageSize = "photo_size"
+        case numberOfResults = "rows"
     }
     
     internal func toKeyedDictionary() -> [Key : APIParamValue] {
+        let defaultParams: [Key : APIParamValue] = [
+            .imageSize : .convertible(imageSize),
+            .numberOfResults : .convertible(numberOfResults)
+        ]
+        
         switch self {
             case .searchOnly(let search):
-                return [.searchString : .convertible(search), .imageSize : .convertible(imageSize)]
+                return defaultParams.byUpdating(pairs: [.searchString : .convertible(search)])
             case .categoryOnly(let category):
-                return [.category : .convertible(category), .imageSize : .convertible(imageSize)]
+                return defaultParams.byUpdating(pairs: [.category : .convertible(category)])
             case .searchAndCategory(search: let search, category: let category):
-                return [
-                    .searchString : .convertible(search),
-                    .category : .convertible(category),
-                    .imageSize : .convertible(imageSize)
-                ]
+                return defaultParams.byUpdating(pairs: [.searchString : .convertible(search), .category : .convertible(category)])
         }
     }
 }

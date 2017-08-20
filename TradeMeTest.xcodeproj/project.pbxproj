@@ -35,6 +35,7 @@
 		75D28FAA1F458F2700F5AD86 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D28FA91F458F2700F5AD86 /* Listing.swift */; };
 		75D28FAC1F45909600F5AD86 /* SearchParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D28FAB1F45909600F5AD86 /* SearchParams.swift */; };
 		75D28FB01F4597BC00F5AD86 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D28FAF1F4597BC00F5AD86 /* Then.swift */; };
+		75D2E8671F498A4600EA178A /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D2E8661F498A4600EA178A /* Dictionary.swift */; };
 		75DE3E001F47CD4800A8A6CF /* ListingsNoResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DE3DFE1F47CD4800A8A6CF /* ListingsNoResultsViewController.swift */; };
 		75DE3E011F47CD4800A8A6CF /* ListingsNoResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75DE3DFF1F47CD4800A8A6CF /* ListingsNoResultsViewController.xib */; };
 		75DE3E031F47FA4600A8A6CF /* RootViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75DE3E021F47FA4600A8A6CF /* RootViewController~ipad.xib */; };
@@ -94,6 +95,7 @@
 		75D28FA91F458F2700F5AD86 /* Listing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
 		75D28FAB1F45909600F5AD86 /* SearchParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchParams.swift; sourceTree = "<group>"; };
 		75D28FAF1F4597BC00F5AD86 /* Then.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
+		75D2E8661F498A4600EA178A /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		75DE3DFE1F47CD4800A8A6CF /* ListingsNoResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingsNoResultsViewController.swift; sourceTree = "<group>"; };
 		75DE3DFF1F47CD4800A8A6CF /* ListingsNoResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListingsNoResultsViewController.xib; sourceTree = "<group>"; };
 		75DE3E021F47FA4600A8A6CF /* RootViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "RootViewController~ipad.xib"; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 		75D28FAD1F45979000F5AD86 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				75D2E8651F498A3500EA178A /* Foundation */,
 				754557DD1F46A8ED008C7C48 /* RxSwift */,
 				75D28FAE1F45979A00F5AD86 /* Then */,
 				75C47CDD1F4938FB0032CB99 /* UIKit */,
@@ -273,6 +276,15 @@
 				75D28FAF1F4597BC00F5AD86 /* Then.swift */,
 			);
 			path = Then;
+			sourceTree = "<group>";
+		};
+		75D2E8651F498A3500EA178A /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				75D2E8661F498A4600EA178A /* Dictionary.swift */,
+			);
+			name = Foundation;
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		75F80FB91F43C3E200F8C3FD = {
@@ -665,6 +677,7 @@
 				754557CE1F4695DE008C7C48 /* ListingsContainerViewController.swift in Sources */,
 				75F8101F1F43F7FF00F8C3FD /* CategoryViewModel.swift in Sources */,
 				75C47CDF1F4939170032CB99 /* UIImage.swift in Sources */,
+				75D2E8671F498A4600EA178A /* Dictionary.swift in Sources */,
 				75F810081F43EE2000F8C3FD /* APIClient.swift in Sources */,
 				75D28FA81F458E2C00F5AD86 /* SearchResults.swift in Sources */,
 				75F810001F43E81F00F8C3FD /* NetworkError.swift in Sources */,
