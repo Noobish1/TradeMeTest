@@ -9,7 +9,7 @@ public extension ContainerViewControllerProtocol where Self: UIViewController {
         self.addChildViewController(viewController, toContainerView: containerView)
     }
     
-    // MARK: adding children
+    // MARK: adding/removing children
     public func addChildViewController(_ viewController: UIViewController, toContainerView containerView: UIView) {
         containerView.addSubview(viewController.view)
         
