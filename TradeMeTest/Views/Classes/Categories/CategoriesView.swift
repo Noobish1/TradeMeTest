@@ -1,5 +1,6 @@
 import UIKit
 import RxSwift
+import SnapKit
 
 internal enum CategoriesViewState {
     case loading
@@ -44,8 +45,12 @@ internal final class CategoriesView: UIView {
         let navItem = UINavigationItem(title: NSLocalizedString("Categories", comment: ""))
         
         $0.setItems([navItem], animated: false)
+        $0.barTintColor = .white
     }
-    private let viewControllerContainerView = UIView()
+    private let viewControllerContainerView = UIView().then {
+        $0.layer.borderColor = UIColor.black.cgColor
+        $0.layer.borderWidth = 2
+    }
     private let initialFetch = Singular()
     private let disposeBag = DisposeBag()
     private let onDone: () -> Completable
@@ -156,6 +161,9 @@ internal final class CategoriesView: UIView {
         }
         
         let navVC = UINavigationController(rootViewController: viewController)
+        navVC.navigationBar.barTintColor = .white
+        navVC.navigationBar.setBackgroundImage(UIImage(color: .white), for: .default)
+        navVC.navigationBar.shadowImage = UIImage(color: .black)
         
         viewControllerContainerView.addSubview(navVC.view)
         
@@ -169,6 +177,8 @@ internal final class CategoriesView: UIView {
     }
     
     private func setupViews() {
+        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.borderWidth = 2
         self.addSubview(topContainerView)
         
         let innerContainerView = UIView()
@@ -266,7 +276,7 @@ internal final class CategoriesView: UIView {
                 make.top.equalTo(view.snp.bottom).inset(44)
                 make.leading.equalToSuperview()
                 make.trailing.equalToSuperview()
-                make.height.equalTo(CategoriesViewPosition.openVCHeight)
+                make.bottom.equalToSuperview()
             }
         }
     }

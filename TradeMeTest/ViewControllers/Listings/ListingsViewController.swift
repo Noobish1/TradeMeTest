@@ -8,6 +8,7 @@ internal final class ListingsViewController: UIViewController {
         $0.register(ListingCollectionViewCell.self, forCellWithReuseIdentifier: ListingCollectionViewCell.identifier)
         $0.dataSource = self
         $0.delegate = self
+        $0.backgroundColor = .white
     }
     fileprivate let listings: [ListingViewModel]
     
@@ -59,13 +60,13 @@ internal final class ListingsViewController: UIViewController {
     private func collectionViewLayout(for size: CGSize) -> UICollectionViewFlowLayout {
         if UIDevice.current.userInterfaceIdiom == .pad {
             return UICollectionViewFlowLayout().then {
-                $0.minimumInteritemSpacing = 5
-                $0.minimumLineSpacing = 5
+                $0.minimumInteritemSpacing = 2
+                $0.minimumLineSpacing = 2
             }
         } else {
             return UICollectionViewFlowLayout().then {
-                $0.minimumInteritemSpacing = 5
-                $0.minimumLineSpacing = 5
+                $0.minimumInteritemSpacing = 2
+                $0.minimumLineSpacing = 2
                 $0.scrollDirection = size.width > size.height ? .horizontal : .vertical
             }
         }

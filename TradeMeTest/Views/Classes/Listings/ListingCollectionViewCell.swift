@@ -8,9 +8,11 @@ internal final class ListingCollectionViewCellContentView: UIView, NibCreatable 
 }
 
 internal final class ListingCollectionViewCell: NibBackedCollectionViewCell<ListingCollectionViewCellContentView> {
-    
     // MARK: update
     internal func update(with viewModel: ListingViewModel) {
+        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.borderWidth = 2
+        
         innerContentView.titleLabel.text = viewModel.title
         innerContentView.imageView.kf.setImage(with: viewModel.imageURL)
     }

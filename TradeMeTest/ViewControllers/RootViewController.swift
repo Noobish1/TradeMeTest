@@ -75,6 +75,8 @@ internal final class RootViewController: UIViewController, ContainerViewControll
     // MARK: setup
     private func setupSearchView() {
         searchContainerView.addSubview(searchView)
+        searchContainerView.layer.borderColor = UIColor.black.cgColor
+        searchContainerView.layer.borderWidth = 2
         
         searchView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
