@@ -8,7 +8,7 @@ internal enum SearchParams {
     case searchAndCategory(search: String, category: String)
     
     internal var imageSize: String {
-        return "List"
+        return "Gallery"
     }
     
     internal init?(search optionalSearch: String?, category optionalCategory: String?) {

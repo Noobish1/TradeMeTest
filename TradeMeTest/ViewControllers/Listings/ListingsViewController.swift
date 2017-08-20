@@ -58,18 +58,16 @@ internal final class ListingsViewController: UIViewController {
     
     // MARK: layout logic
     private func collectionViewLayout(for size: CGSize) -> UICollectionViewFlowLayout {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            return UICollectionViewFlowLayout().then {
-                $0.minimumInteritemSpacing = 2
-                $0.minimumLineSpacing = 2
-            }
-        } else {
-            return UICollectionViewFlowLayout().then {
-                $0.minimumInteritemSpacing = 2
-                $0.minimumLineSpacing = 2
-                $0.scrollDirection = size.width > size.height ? .horizontal : .vertical
-            }
+        let layout = UICollectionViewFlowLayout().then {
+            $0.minimumInteritemSpacing = 2
+            $0.minimumLineSpacing = 2
         }
+        
+        if UIDevice.current.userInterfaceIdiom != .pad {
+            layout.scrollDirection = size.width > size.height ? .horizontal : .vertical
+        }
+        
+        return layout
     }
 }
 
@@ -80,13 +78,13 @@ extension ListingsViewController: UICollectionViewDelegateFlowLayout {
         }
         
         if UIDevice.current.userInterfaceIdiom == .pad {
-            let width = floor((self.view.frame.size.width - (flowLayout.minimumInteritemSpacing * 2))/3.0)
+            let width = floor((self.view.frame.width - (flowLayout.minimumInteritemSpacing * 2))/3.0)
             
             return CGSize(width: width, height: width)
         } else {
-            if self.view.frame.width > self.view.frame.size.height {
+            if self.view.frame.width > self.view.frame.height {
                 // landscape
-                return CGSize(width: 250, height: self.view.frame.size.height)
+                return CGSize(width: 250, height: self.view.frame.height)
             } else {
                 // portrait
                 return CGSize(width: self.view.frame.width, height: 250)

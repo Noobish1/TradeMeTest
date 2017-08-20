@@ -4,6 +4,7 @@ import Kingfisher
 // MARK: ListingCollectionViewCellContentView
 internal final class ListingCollectionViewCellContentView: UIView, NibCreatable {
     // MARK: outlets
+    @IBOutlet fileprivate weak var idLabel: UILabel!
     @IBOutlet fileprivate weak var imageView: UIImageView!
     @IBOutlet fileprivate weak var titleLabel: UILabel!
 }
@@ -13,7 +14,9 @@ internal final class ListingCollectionViewCell: NibBackedCollectionViewCell<List
     // MARK: update
     internal func update(with viewModel: ListingViewModel) {
         self.applyDefaultBorder()
+        innerContentView.imageView.applyDefaultBorder()
         
+        innerContentView.idLabel.text = viewModel.id
         innerContentView.titleLabel.text = viewModel.title
         innerContentView.imageView.kf.setImage(with: viewModel.imageURL)
     }
