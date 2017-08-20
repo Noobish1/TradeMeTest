@@ -46,7 +46,10 @@ extension SearchParams: KeyedAPIParameters {
             case .categoryOnly(let category):
                 return defaultParams.byUpdating(pairs: [.category : .convertible(category)])
             case .searchAndCategory(search: let search, category: let category):
-                return defaultParams.byUpdating(pairs: [.searchString : .convertible(search), .category : .convertible(category)])
+                return defaultParams.byUpdating(pairs: [
+                    .searchString : .convertible(search),
+                    .category : .convertible(category)
+                ])
         }
     }
 }
