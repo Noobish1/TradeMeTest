@@ -1,11 +1,13 @@
 import Foundation
 import KeyedMapper
 
+// MARK: Listing
 internal struct Listing {
     internal let title: String
     internal let imageURLString: String?
 }
 
+// MARK: Mappable
 extension Listing: Mappable {
     internal enum Key: String, JSONKey {
         case title = "Title"

@@ -1,12 +1,14 @@
 import Foundation
 import KeyedMapper
 
+// MARK: Category
 internal struct Category {
     internal let name: String
     internal let number: String
     internal let subcategories: [Category]
 }
 
+// MARK: Mappable
 extension Category: Mappable {
     internal enum Key: String, JSONKey {
         case name = "Name"
