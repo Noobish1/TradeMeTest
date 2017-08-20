@@ -77,8 +77,7 @@ internal final class RootViewController: UIViewController, ContainerViewControll
     // MARK: setup
     private func setupSearchView() {
         searchContainerView.addSubview(searchView)
-        searchContainerView.layer.borderColor = UIColor.black.cgColor
-        searchContainerView.layer.borderWidth = 2
+        searchContainerView.applyDefaultBorder()
         
         searchView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -127,19 +126,16 @@ internal final class RootViewController: UIViewController, ContainerViewControll
     }
     
     private func setupContainerView() {
-        containerView.layer.borderColor = UIColor.black.cgColor
-        containerView.layer.borderWidth = 2
+        containerView.applyDefaultBorder()
     }
     
     private func setupStatusBarView() {
-        statusBarView.layer.borderColor = UIColor.black.cgColor
-        statusBarView.layer.borderWidth = 2
+        statusBarView.applyDefaultBorder()
     }
     
     private func setupLeftPadViewIfNeeded() {
         if UIDevice.current.userInterfaceIdiom == .pad {
-            leftPadView.layer.borderColor = UIColor.black.cgColor
-            leftPadView.layer.borderWidth = 2
+            leftPadView.applyDefaultBorder()
         }
     }
     

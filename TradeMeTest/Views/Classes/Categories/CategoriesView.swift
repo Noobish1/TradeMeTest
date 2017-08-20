@@ -48,8 +48,7 @@ internal final class CategoriesView: UIView {
         $0.barTintColor = .white
     }
     private let viewControllerContainerView = UIView().then {
-        $0.layer.borderColor = UIColor.black.cgColor
-        $0.layer.borderWidth = 2
+        $0.applyDefaultBorder()
     }
     private let initialFetch = Singular()
     private let disposeBag = DisposeBag()
@@ -177,8 +176,7 @@ internal final class CategoriesView: UIView {
     }
     
     private func setupViews() {
-        self.layer.borderColor = UIColor.black.cgColor
-        self.layer.borderWidth = 2
+        self.applyDefaultBorder()
         self.addSubview(topContainerView)
         
         let innerContainerView = UIView()
