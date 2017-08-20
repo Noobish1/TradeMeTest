@@ -11,20 +11,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="5YF-V7-fg7" customClass="ListingCollectionViewCellContentView" customModule="TradeMeTest" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="236"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k1Y-AJ-W3t">
-                    <rect key="frame" x="20" y="20" width="335" height="165"/>
+                    <rect key="frame" x="20" y="20" width="335" height="159"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mp-0M-Mr2">
-                    <rect key="frame" x="313" y="195" width="42" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mp-0M-Mr2">
+                    <rect key="frame" x="20" y="189" width="335" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0H-jY-En5">
-                    <rect key="frame" x="20" y="195" width="285" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0H-jY-En5">
+                    <rect key="frame" x="20" y="211" width="335" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -32,15 +32,16 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="D0H-jY-En5" firstAttribute="top" secondItem="k1Y-AJ-W3t" secondAttribute="bottom" constant="10" id="01X-qg-eGn"/>
-                <constraint firstAttribute="bottom" secondItem="D0H-jY-En5" secondAttribute="bottom" constant="20" id="4Oy-DG-GkW"/>
-                <constraint firstItem="D0H-jY-En5" firstAttribute="leading" secondItem="5YF-V7-fg7" secondAttribute="leading" constant="20" id="KNF-sK-xI0"/>
+                <constraint firstAttribute="trailing" secondItem="D0H-jY-En5" secondAttribute="trailing" constant="20" id="CYO-em-GO4"/>
                 <constraint firstAttribute="trailing" secondItem="k1Y-AJ-W3t" secondAttribute="trailing" constant="20" id="OPc-rs-B3o"/>
                 <constraint firstItem="k1Y-AJ-W3t" firstAttribute="leading" secondItem="5YF-V7-fg7" secondAttribute="leading" constant="20" id="RZc-Jz-JHJ"/>
-                <constraint firstItem="2Mp-0M-Mr2" firstAttribute="leading" secondItem="D0H-jY-En5" secondAttribute="trailing" constant="8" id="dlL-8F-Wg8"/>
-                <constraint firstAttribute="trailing" secondItem="2Mp-0M-Mr2" secondAttribute="trailing" constant="20" id="jmB-x3-v7f"/>
+                <constraint firstItem="2Mp-0M-Mr2" firstAttribute="top" secondItem="k1Y-AJ-W3t" secondAttribute="bottom" constant="10" id="Ydn-Up-li2"/>
+                <constraint firstItem="D0H-jY-En5" firstAttribute="leading" secondItem="5YF-V7-fg7" secondAttribute="leading" constant="20" id="cHo-o0-yLd"/>
+                <constraint firstItem="D0H-jY-En5" firstAttribute="top" secondItem="2Mp-0M-Mr2" secondAttribute="bottom" constant="4" id="cer-ia-WOX"/>
+                <constraint firstItem="2Mp-0M-Mr2" firstAttribute="leading" secondItem="5YF-V7-fg7" secondAttribute="leading" constant="20" id="gj4-Kp-SIk"/>
                 <constraint firstItem="k1Y-AJ-W3t" firstAttribute="top" secondItem="5YF-V7-fg7" secondAttribute="top" constant="20" id="lvm-VQ-ezb"/>
-                <constraint firstItem="2Mp-0M-Mr2" firstAttribute="top" secondItem="D0H-jY-En5" secondAttribute="top" id="zz7-j5-6vo"/>
+                <constraint firstAttribute="trailing" secondItem="2Mp-0M-Mr2" secondAttribute="trailing" constant="20" id="rD7-cM-lVw"/>
+                <constraint firstAttribute="bottom" secondItem="D0H-jY-En5" secondAttribute="bottom" constant="20" id="xen-9j-hxn"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
@@ -51,7 +52,7 @@
                 <outlet property="imageView" destination="k1Y-AJ-W3t" id="V7v-J8-oD0"/>
                 <outlet property="titleLabel" destination="D0H-jY-En5" id="0uw-3d-QiA"/>
             </connections>
-            <point key="canvasLocation" x="37.5" y="-191"/>
+            <point key="canvasLocation" x="37.5" y="-183"/>
         </view>
     </objects>
 </document>
