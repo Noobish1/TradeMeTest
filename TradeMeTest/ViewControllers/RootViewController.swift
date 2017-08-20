@@ -84,11 +84,13 @@ internal final class RootViewController: UIViewController, ContainerViewControll
     }
     
     private func setupCategoriesView() {
-        categoriesContainerView.snp.makeConstraints { make in
-            categoriesTopToTopConstraint = make.top.equalTo(self.topLayoutGuide.snp.bottom).constraint
+        if UIDevice.current.userInterfaceIdiom != .pad {
+            categoriesContainerView.snp.makeConstraints { make in
+                categoriesTopToTopConstraint = make.top.equalTo(self.topLayoutGuide.snp.bottom).constraint
+            }
+            
+            categoriesTopToTopConstraint.deactivate()
         }
-        
-        categoriesTopToTopConstraint.deactivate()
         
         categoriesContainerView.addSubview(categoriesView)
         
