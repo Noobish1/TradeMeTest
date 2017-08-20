@@ -12,11 +12,12 @@ internal extension UIImage {
         }
         
         UIGraphicsEndImageContext()
-        if let img = image.cgImage {
-            self.init(cgImage: img)
-        } else {
+        
+        guard let cgImage = image.cgImage else {
             return nil
         }
+        
+        self.init(cgImage: cgImage)
     }
     
     internal convenience init?(color: UIColor) {
