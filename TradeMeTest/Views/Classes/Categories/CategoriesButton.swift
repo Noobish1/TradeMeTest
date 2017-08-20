@@ -36,8 +36,8 @@ fileprivate extension CategoriesViewState {
 // MARK: CategoriesButton
 internal final class CategoriesButton: UIControl {
     // MARK: properties
-    internal let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-    internal let textLabel: UILabel
+    private let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    private let textLabel: UILabel
     private var activityIndicatorWidthConstraint: Constraint!
     
     // MARK: init/deinit
