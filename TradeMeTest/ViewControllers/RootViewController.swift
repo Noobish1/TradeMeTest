@@ -38,9 +38,10 @@ internal final class RootViewController: UIViewController, ContainerViewControll
     // MARK: outlets
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var categoriesContainerView: UIView!
+    @IBOutlet private weak var searchContainerView: UIView!
     @IBOutlet private weak var categoriesHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var containerBottomConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var searchContainerView: UIView!
+    private var categoriesTopToTopConstraint: Constraint!
     // MARK: properties
     private lazy var categoriesView: CategoriesView = {
         CategoriesView(parentVC: self, onTap: { [weak self] in
@@ -81,6 +82,12 @@ internal final class RootViewController: UIViewController, ContainerViewControll
     }
     
     private func setupCategoriesView() {
+        categoriesContainerView.snp.makeConstraints { make in
+            categoriesTopToTopConstraint = make.top.equalTo(self.topLayoutGuide.snp.bottom).constraint
+        }
+        
+        categoriesTopToTopConstraint.deactivate()
+        
         categoriesContainerView.addSubview(categoriesView)
         
         categoriesView.snp.makeConstraints { make in
@@ -182,7 +189,15 @@ internal final class RootViewController: UIViewController, ContainerViewControll
     
     // MARK: animations
     private func performCategoriesAnimation(_ animation: CategoriesAnimation, completion: (() -> Void)?) {
-        categoriesHeightConstraint.constant = animation.categoriesHeightConstant
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            categoriesHeightConstraint.constant = animation.categoriesHeightConstant
+        } else {
+            if animation == .present {
+                categoriesTopToTopConstraint.activate()
+            } else {
+                categoriesTopToTopConstraint.deactivate()
+            }
+        }
         
         UIView.animate(withDuration: animation.duration, animations: {
             self.view.setNeedsLayout()

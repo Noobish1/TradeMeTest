@@ -29,7 +29,7 @@ internal enum SearchParams {
 // MARK: KeyedAPIParameters
 extension SearchParams: KeyedAPIParameters {
     internal enum Key: String, ParamJSONKey {
-        case text = "search_string"
+        case searchString = "search_string"
         case category
         case imageSize = "photo_size"
     }
@@ -37,12 +37,12 @@ extension SearchParams: KeyedAPIParameters {
     internal func toKeyedDictionary() -> [Key : APIParamValue] {
         switch self {
             case .searchOnly(let search):
-                return [.text : .convertible(search), .imageSize : .convertible(imageSize)]
+                return [.searchString : .convertible(search), .imageSize : .convertible(imageSize)]
             case .categoryOnly(let category):
-                return [.text : .convertible(category), .imageSize : .convertible(imageSize)]
+                return [.category : .convertible(category), .imageSize : .convertible(imageSize)]
             case .searchAndCategory(search: let search, category: let category):
                 return [
-                    .text : .convertible(search),
+                    .searchString : .convertible(search),
                     .category : .convertible(category),
                     .imageSize : .convertible(imageSize)
                 ]
