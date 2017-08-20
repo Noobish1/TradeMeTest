@@ -1,13 +1,16 @@
 import UIKit
 import RxSwift
 import SnapKit
+import Then
 
+// MARK: CategoriesViewState
 internal enum CategoriesViewState {
     case loading
     case loaded(CategoryViewController)
     case failedToLoad
 }
 
+// MARK: CategoriesViewPosition
 internal enum CategoriesViewPosition {
     case open
     case collapsed
@@ -36,8 +39,9 @@ internal enum CategoriesViewPosition {
     }
 }
 
+// MARK: CategoriesView
 internal final class CategoriesView: UIView {
-    // MARK: properties
+    // MARK: private properties
     private var state: CategoriesViewState
     private let topContainerView = UIView()
     private let categoriesButton: CategoriesButton
@@ -56,6 +60,7 @@ internal final class CategoriesView: UIView {
     private let onTap: () -> Void
     private weak var parentVC: UIViewController?
     private let behaviorSubject = BehaviorSubject<CategoryViewModel?>(value: nil)
+    // MARK: internal properties
     internal var observable: Observable<CategoryViewModel?> {
         return behaviorSubject.asObservable()
     }
@@ -159,10 +164,11 @@ internal final class CategoriesView: UIView {
             fatalError("CategoriesView does not have a parentVC")
         }
         
-        let navVC = UINavigationController(rootViewController: viewController)
-        navVC.navigationBar.barTintColor = .white
-        navVC.navigationBar.setBackgroundImage(UIImage(color: .white), for: .default)
-        navVC.navigationBar.shadowImage = UIImage(color: .black)
+        let navVC = UINavigationController(rootViewController: viewController).then {
+            $0.navigationBar.barTintColor = .white
+            $0.navigationBar.setBackgroundImage(UIImage(color: .white), for: .default)
+            $0.navigationBar.shadowImage = UIImage(color: .black)
+        }
         
         viewControllerContainerView.addSubview(navVC.view)
         
@@ -177,10 +183,20 @@ internal final class CategoriesView: UIView {
     
     private func setupViews() {
         self.applyDefaultBorder()
-        self.addSubview(topContainerView)
         
-        let innerContainerView = UIView()
-        innerContainerView.clipsToBounds = true
+        let (topContainerView, innerContainerView) = setupTopAndInnerContainerViews(in: self)
+        let categoryHandholdContainerView = setupCategoryHandholdContainerView(in: innerContainerView)
+        setupViewControllerContainerView(relativeTo: topContainerView)
+        setupCategoriesNavBar(below: categoryHandholdContainerView, in: innerContainerView)
+        setupCategoriesButton(in: innerContainerView)
+    }
+    
+    private func setupTopAndInnerContainerViews(in containerView: UIView) -> (UIView, UIView) {
+        containerView.addSubview(topContainerView)
+        
+        let innerContainerView = UIView().then {
+            $0.clipsToBounds = true
+        }
         
         topContainerView.addSubview(innerContainerView)
         
@@ -213,6 +229,10 @@ internal final class CategoriesView: UIView {
             }
         }
         
+        return (topContainerView, innerContainerView)
+    }
+    
+    private func setupCategoryHandholdContainerView(in containerView: UIView) -> UIView {
         let categoryHandholdContainerView = UIView()
         let categoryHandholdView = UIView().then {
             $0.backgroundColor = .darkGray
@@ -226,7 +246,7 @@ internal final class CategoriesView: UIView {
             make.center.equalToSuperview()
         }
         
-        innerContainerView.addSubview(categoryHandholdContainerView)
+        containerView.addSubview(categoryHandholdContainerView)
         
         categoryHandholdContainerView.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -235,9 +255,7 @@ internal final class CategoriesView: UIView {
             make.height.equalTo(CategoriesViewPosition.handHoldContainerHeight)
         }
         
-        setupViewControllerContainerView(relativeTo: topContainerView)
-        setupCategoriesNavBar(below: categoryHandholdContainerView, in: innerContainerView)
-        setupCategoriesButton(in: innerContainerView)
+        return categoryHandholdContainerView
     }
     
     private func setupCategoriesButton(in containerView: UIView) {
