@@ -14,7 +14,9 @@
                 <outlet property="categoriesHeightConstraint" destination="dQG-2G-HOT" id="nSU-uY-5VC"/>
                 <outlet property="containerBottomConstraint" destination="0ij-Si-7U0" id="AmL-N5-HpH"/>
                 <outlet property="containerView" destination="kAy-bf-ONg" id="1ig-GP-dCL"/>
+                <outlet property="leftPadView" destination="Bu5-Ou-qJz" id="6CC-Ea-0pL"/>
                 <outlet property="searchContainerView" destination="VJY-hm-k4J" id="acV-SE-QL4"/>
+                <outlet property="statusBarView" destination="ugs-Z8-h3x" id="md1-2n-nWf"/>
                 <outlet property="view" destination="iN0-l3-epB" id="5gb-Vs-I7X"/>
             </connections>
         </placeholder>
@@ -23,6 +25,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ugs-Z8-h3x">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DHG-Y8-JAQ">
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <subviews>
@@ -44,17 +50,25 @@
                                 <constraint firstAttribute="width" constant="64" id="dQG-2G-HOT"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bu5-Ou-qJz">
+                            <rect key="frame" x="0.0" y="0.0" width="64" height="557"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="Bu5-Ou-qJz" firstAttribute="top" secondItem="DHG-Y8-JAQ" secondAttribute="top" id="AS9-BX-fpM"/>
                         <constraint firstAttribute="trailing" secondItem="kAy-bf-ONg" secondAttribute="trailing" constant="64" id="M2Q-vn-98p"/>
                         <constraint firstAttribute="trailing" secondItem="VJY-hm-k4J" secondAttribute="trailing" id="OKq-rk-9bY"/>
                         <constraint firstItem="VJY-hm-k4J" firstAttribute="leading" secondItem="DHG-Y8-JAQ" secondAttribute="leading" id="OdV-iZ-Bkk"/>
+                        <constraint firstItem="Bu5-Ou-qJz" firstAttribute="leading" secondItem="DHG-Y8-JAQ" secondAttribute="leading" id="QJV-bz-iQZ"/>
                         <constraint firstItem="kAy-bf-ONg" firstAttribute="top" secondItem="DHG-Y8-JAQ" secondAttribute="top" id="Xli-Og-JEb"/>
+                        <constraint firstItem="kAy-bf-ONg" firstAttribute="leading" secondItem="Bu5-Ou-qJz" secondAttribute="trailing" id="cEH-wS-v9h"/>
                         <constraint firstAttribute="bottom" secondItem="VJY-hm-k4J" secondAttribute="bottom" id="eit-FI-SJj"/>
                         <constraint firstAttribute="bottom" secondItem="kAy-bf-ONg" secondAttribute="bottom" constant="90" id="hU9-Pf-frJ"/>
                         <constraint firstItem="jh4-BS-hZX" firstAttribute="top" secondItem="DHG-Y8-JAQ" secondAttribute="top" id="lma-c0-1S1"/>
                         <constraint firstAttribute="trailing" secondItem="jh4-BS-hZX" secondAttribute="trailing" id="nhd-Qs-h98"/>
+                        <constraint firstItem="VJY-hm-k4J" firstAttribute="top" secondItem="Bu5-Ou-qJz" secondAttribute="bottom" id="qnQ-AQ-7Pc"/>
                         <constraint firstItem="VJY-hm-k4J" firstAttribute="top" secondItem="jh4-BS-hZX" secondAttribute="bottom" id="xRc-wN-4qQ"/>
                         <constraint firstItem="kAy-bf-ONg" firstAttribute="leading" secondItem="DHG-Y8-JAQ" secondAttribute="leading" constant="64" id="xxA-Jg-pPD"/>
                     </constraints>
@@ -66,6 +80,10 @@
                 <constraint firstAttribute="trailing" secondItem="DHG-Y8-JAQ" secondAttribute="trailing" id="82b-dg-7jr"/>
                 <constraint firstItem="DHG-Y8-JAQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9hE-Tb-Qva"/>
                 <constraint firstItem="DHG-Y8-JAQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="BPk-Db-QS8"/>
+                <constraint firstItem="ugs-Z8-h3x" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="PMT-hj-xlm"/>
+                <constraint firstItem="ugs-Z8-h3x" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Rzr-XM-wZJ"/>
+                <constraint firstAttribute="trailing" secondItem="ugs-Z8-h3x" secondAttribute="trailing" id="ZDM-3O-g3p"/>
+                <constraint firstItem="DHG-Y8-JAQ" firstAttribute="top" secondItem="ugs-Z8-h3x" secondAttribute="bottom" id="qNX-aT-V1b"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>

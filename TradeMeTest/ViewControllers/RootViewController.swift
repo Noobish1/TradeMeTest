@@ -41,8 +41,10 @@ internal final class RootViewController: UIViewController, ContainerViewControll
     @IBOutlet private weak var searchContainerView: UIView!
     @IBOutlet private weak var categoriesHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var containerBottomConstraint: NSLayoutConstraint!
-    private var categoriesTopToTopConstraint: Constraint!
+    @IBOutlet private weak var statusBarView: UIView!
+    @IBOutlet private weak var leftPadView: UIView!
     // MARK: properties
+    private var categoriesTopToTopConstraint: Constraint!
     private lazy var categoriesView: CategoriesView = {
         CategoriesView(parentVC: self, onTap: { [weak self] in
             guard let strongSelf = self else { return }
@@ -124,10 +126,30 @@ internal final class RootViewController: UIViewController, ContainerViewControll
         setupInitialViewController(listingsContainerViewController, containerView: containerView)
     }
     
+    private func setupContainerView() {
+        containerView.layer.borderColor = UIColor.black.cgColor
+        containerView.layer.borderWidth = 2
+    }
+    
+    private func setupStatusBarView() {
+        statusBarView.layer.borderColor = UIColor.black.cgColor
+        statusBarView.layer.borderWidth = 2
+    }
+    
+    private func setupLeftPadViewIfNeeded() {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            leftPadView.layer.borderColor = UIColor.black.cgColor
+            leftPadView.layer.borderWidth = 2
+        }
+    }
+    
     // MARK: UIViewController
     internal override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupLeftPadViewIfNeeded()
+        setupStatusBarView()
+        setupContainerView()
         setupSearchView()
         setupCategoriesView()
         setupListingsView()
