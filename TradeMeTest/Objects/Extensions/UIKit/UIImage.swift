@@ -1,9 +1,9 @@
 import UIKit
 
-public extension UIImage {
-    public convenience init?(color: UIColor, size: CGSize) {
-        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
+internal extension UIImage {
+    internal convenience init?(color: UIColor, size: CGSize) {
+        let rect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
         color.setFill()
         UIRectFill(rect)
         
@@ -12,14 +12,14 @@ public extension UIImage {
         }
         
         UIGraphicsEndImageContext()
-        if let img: CGImage = image.cgImage {
+        if let img = image.cgImage {
             self.init(cgImage: img)
         } else {
             return nil
         }
     }
     
-    public convenience init?(color: UIColor) {
+    internal convenience init?(color: UIColor) {
         self.init(color: color, size: CGSize(width: 1, height: 1))
     }
 }
