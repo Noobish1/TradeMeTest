@@ -68,7 +68,11 @@ internal final class ListingsContainerViewController: UIViewController, Containe
                     self?.transition(to: .loaded(ListingsViewController(listings: listings)))
                 }
             }, onError: { [weak self] _ in
-                self?.transition(to: .failedToLoad(ListingsErrorViewController()))
+                let errorVC = ListingsErrorViewController(onTap: { [weak self] in
+                    self?.update(with: searchParams)
+                })
+                
+                self?.transition(to: .failedToLoad(errorVC))
             })
             .disposed(by: disposeBag)
     }

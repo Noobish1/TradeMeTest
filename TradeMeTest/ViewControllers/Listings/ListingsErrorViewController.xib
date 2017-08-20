@@ -26,12 +26,22 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnY-kQ-hr7">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <connections>
+                        <action selector="buttonTapped" destination="-1" eventType="touchUpInside" id="Ggc-CH-TVa"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Yg5-Be-ySl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="7uV-yd-EDe"/>
+                <constraint firstItem="tnY-kQ-hr7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="M7L-39-duE"/>
                 <constraint firstItem="Yg5-Be-ySl" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="WTJ-ZL-aHW"/>
                 <constraint firstAttribute="trailing" secondItem="Yg5-Be-ySl" secondAttribute="trailing" constant="20" id="ZNl-GU-FCa"/>
+                <constraint firstAttribute="trailing" secondItem="tnY-kQ-hr7" secondAttribute="trailing" id="s5p-NY-MZC"/>
+                <constraint firstAttribute="bottom" secondItem="tnY-kQ-hr7" secondAttribute="bottom" id="tld-RI-gPQ"/>
+                <constraint firstItem="tnY-kQ-hr7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xKw-wF-fsz"/>
             </constraints>
         </view>
     </objects>
