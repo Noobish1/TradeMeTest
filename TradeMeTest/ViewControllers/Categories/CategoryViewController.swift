@@ -2,6 +2,7 @@ import UIKit
 import SnapKit
 import RxSwift
 
+// MARK: CategoryViewController
 internal final class CategoryViewController: UIViewController {
     // MARK: properties
     private lazy var tableView = UITableView(frame: UIScreen.main.bounds, style: .grouped).then {
@@ -54,12 +55,14 @@ internal final class CategoryViewController: UIViewController {
         }
     }
     
+    // MARK: interface actions
     @objc
     private func doneButtonPressed() {
         _ = onDone(category).subscribe()
     }
 }
 
+// MARK: UITableViewDataSource
 extension CategoryViewController: UITableViewDataSource {
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
@@ -82,6 +85,7 @@ extension CategoryViewController: UITableViewDataSource {
     }
 }
 
+// MARK: UITableViewDelegate
 extension CategoryViewController: UITableViewDelegate {
     internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
