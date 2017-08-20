@@ -57,7 +57,7 @@ internal final class CategoriesButton: UIControl {
     }
     
     // MARK: setup
-    private func setupViews(for state: CategoriesViewState) {
+    private func setupContainerView() -> UIView {
         let containerView = UIView()
         
         self.addSubview(containerView)
@@ -66,6 +66,10 @@ internal final class CategoriesButton: UIControl {
             make.center.equalToSuperview()
         }
         
+        return containerView
+    }
+    
+    private func setupActivityIndicator(in containerView: UIView, for state: CategoriesViewState) {
         containerView.addSubview(activityIndicator)
         
         activityIndicator.snp.remakeConstraints { make in
@@ -75,7 +79,9 @@ internal final class CategoriesButton: UIControl {
             make.width.equalTo(30).priority(UILayoutPriorityDefaultHigh)
             activityIndicatorWidthConstraint = make.width.equalTo(0).priority(state.activityIndictorZeroWidthPriority).constraint
         }
-        
+    }
+    
+    private func setupTextLabel(in containerView: UIView) {
         containerView.addSubview(textLabel)
         
         textLabel.snp.makeConstraints { make in
@@ -83,6 +89,12 @@ internal final class CategoriesButton: UIControl {
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(8)
         }
+    }
+    
+    private func setupViews(for state: CategoriesViewState) {
+        let containerView = setupContainerView()
+        setupActivityIndicator(in: containerView, for: state)
+        setupTextLabel(in: containerView)
     }
     
     // MARK: transition
